@@ -1,0 +1,848 @@
+fileFormatVersion: 2
+guid: d697d43b460c5444695496834f4cafa5
+timeCreated: 1484874649
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ui_sprite_atlas_0
+    21300002: ui_sprite_atlas_1
+    21300004: ui_sprite_atlas_2
+    21300006: ui_sprite_atlas_3
+    21300008: ui_sprite_atlas_4
+    21300010: ui_sprite_atlas_5
+    21300012: ui_sprite_atlas_6
+    21300014: ui_sprite_atlas_7
+    21300016: ui_sprite_atlas_8
+    21300018: ui_sprite_atlas_9
+    21300020: ui_sprite_atlas_10
+    21300022: ui_sprite_atlas_11
+    21300024: ui_sprite_atlas_12
+    21300026: ui_sprite_atlas_13
+    21300028: ui_sprite_atlas_14
+    21300030: ui_sprite_atlas_15
+    21300032: ui_sprite_atlas_16
+    21300034: ui_sprite_atlas_17
+    21300036: ui_sprite_atlas_18
+    21300038: ui_sprite_atlas_19
+    21300040: ui_sprite_atlas_20
+    21300042: ui_sprite_atlas_21
+    21300044: ui_sprite_atlas_22
+    21300046: ui_sprite_atlas_23
+    21300048: ui_sprite_atlas_24
+    21300050: ui_sprite_atlas_25
+    21300052: ui_sprite_atlas_26
+    21300054: ui_sprite_atlas_27
+    21300056: ui_sprite_atlas_28
+    21300058: ui_sprite_atlas_29
+    21300060: ui_sprite_atlas_30
+    21300062: ui_sprite_atlas_31
+    21300064: ui_sprite_atlas_32
+    21300066: ui_sprite_atlas_33
+    21300068: ui_sprite_atlas_34
+    21300070: ui_sprite_atlas_35
+    21300072: ui_sprite_atlas_36
+    21300074: ui_sprite_atlas_37
+    21300076: ui_sprite_atlas_38
+    21300078: ui_sprite_atlas_39
+    21300080: ui_sprite_atlas_40
+    21300082: ui_sprite_atlas_41
+    21300084: ui_sprite_atlas_42
+    21300086: ui_sprite_atlas_43
+    21300088: ui_sprite_atlas_44
+    21300090: ui_sprite_atlas_45
+    21300092: ui_sprite_atlas_46
+    21300094: ui_sprite_atlas_47
+    21300096: ui_sprite_atlas_48
+    21300098: ui_sprite_atlas_49
+    21300100: ui_sprite_atlas_50
+    21300102: ui_sprite_atlas_51
+    21300104: ui_sprite_atlas_52
+    21300106: ui_sprite_atlas_53
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 4096
+    textureFormat: 31
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 1
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ui_sprite_atlas_0
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 3616
+        width: 680
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_1
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 3635
+        width: 680
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_2
+      rect:
+        serializedVersion: 2
+        x: 1640
+        y: 3624
+        width: 681
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_3
+      rect:
+        serializedVersion: 2
+        x: 2379
+        y: 3623
+        width: 678
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_4
+      rect:
+        serializedVersion: 2
+        x: 3128
+        y: 3608
+        width: 679
+        height: 425
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_5
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 3113
+        width: 678
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_6
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 3131
+        width: 680
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_7
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 3131
+        width: 680
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_8
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 3103
+        width: 681
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_9
+      rect:
+        serializedVersion: 2
+        x: 3152
+        y: 3079
+        width: 679
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_10
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 2592
+        width: 678
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_11
+      rect:
+        serializedVersion: 2
+        x: 843
+        y: 2629
+        width: 680
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_12
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 2629
+        width: 680
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_13
+      rect:
+        serializedVersion: 2
+        x: 2397
+        y: 2663
+        width: 416
+        height: 408
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_14
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 2591
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_15
+      rect:
+        serializedVersion: 2
+        x: 3391
+        y: 2584
+        width: 412
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 2104
+        width: 413
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_17
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 2111
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_18
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 2123
+        width: 411
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_19
+      rect:
+        serializedVersion: 2
+        x: 1461
+        y: 2111
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_20
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 2111
+        width: 413
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_21
+      rect:
+        serializedVersion: 2
+        x: 2451
+        y: 2123
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_22
+      rect:
+        serializedVersion: 2
+        x: 2917
+        y: 2117
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_23
+      rect:
+        serializedVersion: 2
+        x: 3415
+        y: 2117
+        width: 417
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_24
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1624
+        width: 412
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_25
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 1631
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_26
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 1637
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_27
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 1637
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_28
+      rect:
+        serializedVersion: 2
+        x: 1947
+        y: 1649
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_29
+      rect:
+        serializedVersion: 2
+        x: 2427
+        y: 1649
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_30
+      rect:
+        serializedVersion: 2
+        x: 2903
+        y: 1671
+        width: 404
+        height: 404
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_31
+      rect:
+        serializedVersion: 2
+        x: 3391
+        y: 1655
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_32
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1157
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_33
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1168
+        width: 412
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_34
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 1169
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_35
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 1175
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_36
+      rect:
+        serializedVersion: 2
+        x: 1941
+        y: 1175
+        width: 410
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_37
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 1187
+        width: 417
+        height: 421
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_38
+      rect:
+        serializedVersion: 2
+        x: 2887
+        y: 1187
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_39
+      rect:
+        serializedVersion: 2
+        x: 3367
+        y: 1187
+        width: 412
+        height: 420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_40
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 695
+        width: 415
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_41
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 701
+        width: 410
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_42
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 715
+        width: 412
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_43
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 719
+        width: 410
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_44
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 713
+        width: 410
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_45
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 731
+        width: 410
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_46
+      rect:
+        serializedVersion: 2
+        x: 2859
+        y: 725
+        width: 410
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_47
+      rect:
+        serializedVersion: 2
+        x: 3345
+        y: 712
+        width: 410
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_48
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 232
+        width: 410
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_49
+      rect:
+        serializedVersion: 2
+        x: 507
+        y: 239
+        width: 412
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_50
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 233
+        width: 410
+        height: 423
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_51
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 251
+        width: 413
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_52
+      rect:
+        serializedVersion: 2
+        x: 1912
+        y: 239
+        width: 415
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ui_sprite_atlas_53
+      rect:
+        serializedVersion: 2
+        x: 2385
+        y: 247
+        width: 410
+        height: 422
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
