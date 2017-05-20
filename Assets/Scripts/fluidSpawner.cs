@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class fluidSpawner : MonoBehaviour {
+public class fluidSpawner : MonoBehaviour { // more like game mangaer but whatever
 
     public GameObject particle;
-    private static int counter;
-    //delete this when joke is terminated
-    public GameObject funny;
+    public static int counter = 20; // when it reaches 0 for when player loses 
+    public GameObject[] cannons;
 
 	void Start () {
         for (int i = 0; i < 20; i++) {
@@ -15,12 +14,26 @@ public class fluidSpawner : MonoBehaviour {
             float y = Random.Range(-4.9f, 5.01f);
             Instantiate(particle, new Vector3(x,y,0), transform.rotation);
         }
-
-        //delete this when joke is terminated
-        funny.SetActive(true);
+        for(int i = 0; i < cannons.Length; i++)
+        {
+            cannons[i].GetComponent<Cannon>().Activate(false);
+        }
 	}
 	
-	void Update () {
-		
-	}
+    void FixedUpdate()
+    {
+        cannons[0].GetComponent<Cannon>().Activate(true);
+        if(Time.fixedTime > 15)
+            cannons[2].GetComponent<Cannon>().Activate(true);
+        if (Time.fixedTime > 40)
+            cannons[1].GetComponent<Cannon>().Activate(true);
+        if (Time.fixedTime > 60)
+            cannons[3].GetComponent<Cannon>().Activate(true);
+
+        if (counter == 0)
+        {
+            //gameover
+        }
+    }
+
 }

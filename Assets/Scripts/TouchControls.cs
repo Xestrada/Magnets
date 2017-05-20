@@ -7,13 +7,13 @@ public class TouchControls : MonoBehaviour {
 	void Update () {
 
         //This makes sure that there is a touch on the screen
-		if(Input.touchCount > 0)
+		if(Input.touchCount > 0 && CompareTag("Particle"))
         {
             ///This gets the first touch and turns the pixel coordinates into game orl coordinates
             magnet.transform.position = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         }
 
-        //Mouse controls
-        magnet.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            magnet.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
 	}
 }
