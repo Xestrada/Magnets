@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using MovementEffects;
 using UnityEngine;
 
 public class Cannon : MonoBehaviour {
@@ -12,15 +12,15 @@ public class Cannon : MonoBehaviour {
     private bool initiate = true;
     private bool flag;
     private bool fire = true;
-    private bool active;
+    private bool active = false;
     private float max_moving_speed = 4;
     private float max_firing_speed = 5;
     private float max_bullet_speed = 6;
 
-
+    //Cannon Should move into the screen and then move. It should also pivot
 	void FixedUpdate () {
 
-        if (fire && active) StartCoroutine(FireBullet(max_firing_speed));
+        if (fire && active) Timing.RunCoroutine(FireBullet(max_firing_speed));
 
         if (dir.x != 0)
         {
@@ -70,20 +70,22 @@ public class Cannon : MonoBehaviour {
         }
 	}
 
-    IEnumerator FireBullet(float speed)
+    //Changed to New Coroutine
+    IEnumerator<float> FireBullet(float speed)
     {
         fire = false;
         float rand = Random.Range(2, speed);
-        yield return new WaitForSeconds(rand);
-        obj = Instantiate(bullet, transform.position, transform.rotation);// can pool later
+        yield return Timing.WaitForSeconds(rand);
+        //Pool Now
+        obj = Instantiate(bullet, transform.position, transform.rotation);
         obj.GetComponent<Rigidbody2D>().AddForce(new Vector3(dir.x, dir.y, 0), ForceMode2D.Impulse); // replace with x and y variables
         fire = true;
         yield return 0;
     }
 
-
-    public void Activate(bool activation)
+    //Should onlly Activate Once
+    public void Activate()
     {
-        active = activation;
+        active = true;
     }
 }

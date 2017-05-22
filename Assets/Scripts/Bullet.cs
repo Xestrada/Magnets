@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
@@ -8,9 +6,10 @@ public class Bullet : MonoBehaviour {
     {
         if(coll.CompareTag("Particle"))
         {
-            fluidSpawner.counter--;
-            Destroy(coll.gameObject);
-            Destroy(gameObject);
+            //Don't destroy just deactivate
+            Manager.particleAmount--;
+            coll.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 
