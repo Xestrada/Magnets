@@ -4,6 +4,7 @@ public class Manager : MonoBehaviour {
 
     public FluidController fluid;
     public Cannon[] cannons;
+    public CameraSetup cam;
     public static int particleAmount;
 
     //Spawn in Particles and Activate First Cannon
