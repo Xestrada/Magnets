@@ -2,8 +2,8 @@
 
 public class CameraSetup : MonoBehaviour {
 
-    public float screenTop;
-    public float screenBottom;
+    float screenTop;
+    float screenBottom;
 	void Start () {
         screenTop = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
         screenBottom = -screenTop;

@@ -39,7 +39,7 @@ public class Cannon : MonoBehaviour {
             }
         }
 
-		if(Time.fixedTime > 15f)
+        if (Time.fixedTime > 15f)
         {
             if (Time.fixedTime > 30f)
             {
@@ -54,6 +54,7 @@ public class Cannon : MonoBehaviour {
                     max_bullet_speed = 10f;
                 }
             }
+        }
 
             if (initiate)
             {
@@ -61,13 +62,14 @@ public class Cannon : MonoBehaviour {
                 {
                     initiate = false;
                 }
+                Debug.Log(max_moving_speed);
                 transform.position = Vector3.MoveTowards(transform.position, pos1.transform.position, max_moving_speed / 100);
             } else if (flag) {
                 transform.position = Vector3.MoveTowards(transform.position, pos2.transform.position, max_moving_speed / 100);
             } else if(!flag){
                 transform.position = Vector3.MoveTowards(transform.position, pos1.transform.position, max_moving_speed / 100);
             }
-        }
+  
 	}
 
     //Changed to New Coroutine
@@ -87,5 +89,17 @@ public class Cannon : MonoBehaviour {
     public void Activate()
     {
         active = true;
+    }
+
+    //Use this to set the position of the top and bottom cannons
+    public void SetPosition(float pos)
+    {
+        transform.position = new Vector2(0, pos);
+    }
+
+    //Use this to set the Limit of the side cannons
+    public void Limit(float l)
+    {
+
     }
 }

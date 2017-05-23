@@ -11,16 +11,24 @@ public class Manager : MonoBehaviour {
 	void Start () {
         particleAmount = fluid.ParticleAmount();
         fluid.Spawn();
+
+        cannons[2].SetPosition(cam.CameraTop() + 0.42f);
+        cannons[3].SetPosition(cam.CameraBottom() - 0.42f);
+
+        cannons[0].Limit(cam.CameraTop());
+        cannons[1].Limit(cam.CameraTop());
+
         cannons[0].Activate();
+
     }
 
 	void FixedUpdate () {
         
-        if (Time.fixedTime > 15)
+        if (Time.fixedTime > 5)
             cannons[2].Activate();
-        if (Time.fixedTime > 40)
+        if (Time.fixedTime > 10)
             cannons[1].Activate();
-        if (Time.fixedTime > 60)
+        if (Time.fixedTime > 15)
             cannons[3].Activate();
         if (particleAmount == 0)
         {
