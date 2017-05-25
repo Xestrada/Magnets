@@ -3,19 +3,19 @@
 public class CameraSetup : MonoBehaviour {
 
     float screenTop;
-    float screenBottom;
+    float screenX;
 	void Start () {
         screenTop = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
-        screenBottom = -screenTop;
-	}
+        screenX = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
+    }
 	
-    public float CameraTop()
+    public float CameraY()
     {
         return screenTop;
     }
 
-    public float CameraBottom()
+    public float CameraX()
     {
-        return screenBottom;
+        return screenX;
     }
 }

@@ -4,6 +4,7 @@ public class Manager : MonoBehaviour {
 
     public FluidController fluid;
     public Cannon[] cannons;
+    public Border[] borders;
     public CameraSetup cam;
     public static int particleAmount;
 
@@ -12,11 +13,26 @@ public class Manager : MonoBehaviour {
         particleAmount = fluid.ParticleAmount();
         fluid.Spawn();
 
-        cannons[2].SetPosition(cam.CameraTop() + 0.42f);
-        cannons[3].SetPosition(cam.CameraBottom() - 0.42f);
+        //Set Up Borders
+        borders[0].SetPosition(new Vector2(0, cam.CameraY()));
+        borders[1].SetPosition(new Vector2(0, -cam.CameraY()));
+        borders[2].SetPosition(new Vector2(-cam.CameraX(), 0));
+        borders[3].SetPosition(new Vector2(cam.CameraX(), 0));
 
-        cannons[0].Limit(cam.CameraTop());
-        cannons[1].Limit(cam.CameraTop());
+        //Set Up Cannons
+        cannons[0].SetPosition(new Vector2(-cam.CameraX() - 0.42f, 0));
+        cannons[1].SetPosition(new Vector2(cam.CameraX() + 0.42f, 0));
+        cannons[2].SetPosition(new Vector2(0, cam.CameraY() + 0.42f));
+        cannons[3].SetPosition(new Vector2(0, -cam.CameraY() - 0.42f));
+
+        //Sets Up Border for the Cannons
+        cannons[0].SetLimits(cam.CameraY() + .02f);
+        cannons[1].SetLimits(cam.CameraY() + .02f);
+        cannons[2].SetLimits(cam.CameraX() + .02f);
+        cannons[3].SetLimits(cam.CameraX() + .02f);
+
+        //cannons[0].Limit(-cam.CameraY());
+        //cannons[1].Limit(-cam.CameraY());
 
         cannons[0].Activate();
 

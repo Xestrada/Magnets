@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour {
 
-    public Transform pos1;
+
     public Vector2 dir;
-    public Transform pos2;
+    Vector2 pos1;
+    Vector2 pos2;
     public GameObject bullet;
     private GameObject obj;
     private bool initiate = true;
@@ -21,20 +22,20 @@ public class Cannon : MonoBehaviour {
 	void FixedUpdate () {
 
         if (fire && active) Timing.RunCoroutine(FireBullet(max_firing_speed));
-
         if (dir.x != 0)
         {
-            if (transform.position.y.Equals(pos1.position.y))
+            
+            if (transform.position.y >= pos1.y)
             {
                 flag = true;
-            } else if (transform.position.y.Equals(pos2.position.y)) {
+            } else if (transform.position.y <= pos2.y) {
                 flag = false;                
             }
         } else if (dir.y != 0) {
-            if (transform.position.x.Equals(pos1.position.x))
+            if (transform.position.x >= pos1.x)
             {
                 flag = true;
-            } else if (transform.position.x.Equals(pos2.position.x)) {
+            } else if (transform.position.x <= pos2.x) {
                 flag = false;
             }
         }
@@ -58,16 +59,12 @@ public class Cannon : MonoBehaviour {
 
             if (initiate)
             {
-                if (transform.position.Equals(pos1.position))
-                {
-                    initiate = false;
-                }
-                Debug.Log(max_moving_speed);
-                transform.position = Vector3.MoveTowards(transform.position, pos1.transform.position, max_moving_speed / 100);
+                initiate = false;
+                transform.position = Vector3.MoveTowards(transform.position, pos1, max_moving_speed / 100);
             } else if (flag) {
-                transform.position = Vector3.MoveTowards(transform.position, pos2.transform.position, max_moving_speed / 100);
+                transform.position = Vector3.MoveTowards(transform.position, pos2, max_moving_speed / 100);
             } else if(!flag){
-                transform.position = Vector3.MoveTowards(transform.position, pos1.transform.position, max_moving_speed / 100);
+                transform.position = Vector3.MoveTowards(transform.position, pos1, max_moving_speed / 100);
             }
   
 	}
@@ -92,14 +89,23 @@ public class Cannon : MonoBehaviour {
     }
 
     //Use this to set the position of the top and bottom cannons
-    public void SetPosition(float pos)
+    public void SetPosition(Vector2 pos)
     {
-        transform.position = new Vector2(0, pos);
+        transform.position = pos;
     }
 
     //Use this to set the Limit of the side cannons
-    public void Limit(float l)
+    public void SetLimits(float pos)
     {
-
+        if (dir.x != 0)
+        {
+            pos1 = new Vector2(transform.position.x, pos);
+            pos2 = new Vector2(transform.position.x, -pos);
+        }
+        else
+        {
+            pos1 = new Vector2(pos, transform.position.y);
+            pos2 = new Vector2(-pos, transform.position.y);
+        }
     }
 }
