@@ -5,7 +5,31 @@ public class TouchControls : MonoBehaviour {
     public Magnet[] magnets;
     bool allOff = true;
 
-    //int FindUnusedMagnet;
+    int FindUnusedMagnet()
+    {
+        for(int i = 0; i < magnets.Length; i++)
+        {
+            if (!magnets[i].gameObject.activeSelf)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    bool IsAlreadyUsed(int x)
+    {
+        for(int i = 0; i < magnets.Length; i++)
+        {
+            if(magnets[i].TouchID == x)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 	void Update () {
@@ -13,43 +37,24 @@ public class TouchControls : MonoBehaviour {
         //This makes sure that there is a touch on the screen
         if (Input.touchCount > 0)
         {
-            allOff = false;
-            ///This gets the first touch and turns the pixel coordinates into game orl coordinates
-            for (int i = 0; i < Input.touchCount; i++)
+            for(int i = 0; i < Input.touchCount; i++)
             {
-                if (i <= 4)
+                if (!IsAlreadyUsed(i))
                 {
-                    if (magnets[i].TouchID == 0 && !magnets[i].gameObject.activeSelf)
+                    int f = FindUnusedMagnet();
+                    if (f >= 0)
                     {
-                        magnets[i].gameObject.SetActive(true);
-                        magnets[i].TouchID = Input.GetTouch(i).fingerId;
-
+                        magnets[f].gameObject.SetActive(true);
+                        magnets[f].SetTouch(i);
                     }
-                    if (magnets[i].TouchID == Input.GetTouch(i).fingerId)
-                    {
-                        magnets[0].SetPosition(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position));
-                    }
-                    else if (magnets[i].TouchID != 0)
-                    {
-                        magnets[i].TouchID = 0;
-                        magnets[i].gameObject.SetActive(false);
-                    }
-
                 }
-            }
-        }
-        else if (!allOff)
-        {
-            for (int i = 0; i < magnets.Length; i++)
-            {
-                magnets[i].gameObject.SetActive(false);
             }
         }
         //Remove this after finishing
         else
         {
-            magnets[0].gameObject.SetActive(true);
-            magnets[0].SetPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+           // magnets[0].gameObject.SetActive(true);
+            //magnets[0].SetPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         }
 
 	}

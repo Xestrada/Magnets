@@ -2,7 +2,8 @@
 
 public class Magnet : MonoBehaviour {
 
-    float touchId = 0;
+    int touchId = -2;
+    bool shouldMove = false;
 
     public Vector2 Position()
     {
@@ -14,7 +15,7 @@ public class Magnet : MonoBehaviour {
         transform.position = pos;
     }
 
-    public float TouchID
+    public int TouchID
     {
         get
         {
@@ -23,6 +24,28 @@ public class Magnet : MonoBehaviour {
         set
         {
             touchId = value;
+        }
+    }
+
+    public void SetTouch(int t)
+    {
+        touchId = t;
+        shouldMove = true;
+        transform.position = Camera.main.ScreenToWorldPoint(Input.GetTouch(touchId).position);
+
+    }
+
+    void Update()
+    {
+        if (shouldMove && Input.touchCount > touchId)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(Input.GetTouch(touchId).position);
+        }
+        else
+        {
+            shouldMove = false;
+            touchId = -2;
+            gameObject.SetActive(false);
         }
     }
 }
