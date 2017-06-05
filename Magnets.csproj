@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\CameraSetup.cs" />
     <Compile Include="Assets\Scripts\Cannon.cs" />
     <Compile Include="Assets\Scripts\FluidController.cs" />
+    <Compile Include="Assets\Scripts\Magnet.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\TouchControls.cs" />
   </ItemGroup>
