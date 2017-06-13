@@ -5,6 +5,7 @@ public class Manager : MonoBehaviour {
     public FluidController fluid;
     public Cannon[] cannons;
     public Border[] borders;
+    public Explosion[] explosions;
     public CameraSetup cam;
     public static int particleAmount;
 
@@ -39,7 +40,17 @@ public class Manager : MonoBehaviour {
     }
 
 	void FixedUpdate () {
-        
+        if(Random.Range(0, 10) == 5)
+        {
+            for (int i = 0; i < explosions.Length; i++){
+                if (!explosions[i].gameObject.activeSelf)
+                {
+                    explosions[i].gameObject.SetActive(true);
+                    explosions[i].Activate(cam.CameraX(), cam.CameraY());
+                    break;
+                }
+            }
+        }
         if (Time.fixedTime > 5)
             cannons[2].Activate();
         if (Time.fixedTime > 10)
