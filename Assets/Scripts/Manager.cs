@@ -7,12 +7,16 @@ public class Manager : MonoBehaviour {
     public Border[] borders;
     public Explosion[] explosions;
     public CameraSetup cam;
+    public TouchControls controls;
+    public GameObject playButton;
     public static int particleAmount;
+    bool playing;
+    float startTime;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
         particleAmount = fluid.ParticleAmount();
-        fluid.Spawn();
+       // fluid.Spawn();
 
         //Set Up Borders
         borders[0].SetPosition(new Vector2(0, cam.CameraY()));
@@ -31,35 +35,46 @@ public class Manager : MonoBehaviour {
         cannons[1].SetLimits(cam.CameraY() + .02f);
         cannons[2].SetLimits(cam.CameraX() + .02f);
         cannons[3].SetLimits(cam.CameraX() + .02f);
-
-        //cannons[0].Limit(-cam.CameraY());
-        //cannons[1].Limit(-cam.CameraY());
-
-        cannons[0].Activate();
+        //Play();
 
     }
 
+    public void Play()
+    {
+        playing = true;
+        fluid.Spawn();
+        cannons[0].Activate();
+        startTime = Time.fixedTime;
+        controls.isPlaying = true;
+        playButton.SetActive(false);
+    }
+
 	void FixedUpdate () {
-        if(Random.Range(0, 10) == 5)
+        //Will fix up later
+        if (playing)
         {
-            for (int i = 0; i < explosions.Length; i++){
-                if (!explosions[i].gameObject.activeSelf)
+            if (Random.Range(0, 20) == 5)
+            {
+                for (int i = 0; i < explosions.Length; i++)
                 {
-                    explosions[i].gameObject.SetActive(true);
-                    explosions[i].Activate(cam.CameraX(), cam.CameraY());
-                    break;
+                    if (!explosions[i].gameObject.activeSelf)
+                    {
+                        explosions[i].gameObject.SetActive(true);
+                        explosions[i].Activate(cam.CameraX(), cam.CameraY());
+                        break;
+                    }
                 }
             }
-        }
-        if (Time.fixedTime > 5)
-            cannons[2].Activate();
-        if (Time.fixedTime > 10)
-            cannons[1].Activate();
-        if (Time.fixedTime > 15)
-            cannons[3].Activate();
-        if (particleAmount == 0)
-        {
-            //GameOver
+            if (Time.fixedTime - startTime > 5)
+                cannons[2].Activate();
+            if (Time.fixedTime - startTime > 10)
+                cannons[1].Activate();
+            if (Time.fixedTime - startTime > 15)
+                cannons[3].Activate();
+            if (particleAmount == 0)
+            {
+                playing = false;
+            }
         }
     }
 }

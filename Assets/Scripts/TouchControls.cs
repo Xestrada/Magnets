@@ -4,6 +4,7 @@ public class TouchControls : MonoBehaviour {
 
     public Magnet[] magnets;
     bool allOff = true;
+    bool on = false;
 
     int FindUnusedMagnet()
     {
@@ -30,12 +31,24 @@ public class TouchControls : MonoBehaviour {
         return false;
     }
 
+    public bool isPlaying
+    {
+        get
+        {
+            return on;
+        }
+        set
+        {
+            on = value;
+        }
+    }
+
 
 
 	void Update () {
 
         //This makes sure that there is a touch on the screen
-        if (Input.touchCount > 0)
+        if (on && Input.touchCount > 0)
         {
             for(int i = 0; i < Input.touchCount; i++)
             {
