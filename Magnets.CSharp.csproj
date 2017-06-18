@@ -84,10 +84,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Border.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\CameraSetup.cs" />
     <Compile Include="Assets\Scripts\Cannon.cs" />
+    <Compile Include="Assets\Scripts\FluidController.cs" />
+    <Compile Include="Assets\Scripts\Magnet.cs" />
+    <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\TouchControls.cs" />
-    <Compile Include="Assets\Scripts\fluidSpawner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SpriteSharp\Editor\Resources\SpriteSharpPersistentMarker.txt" />

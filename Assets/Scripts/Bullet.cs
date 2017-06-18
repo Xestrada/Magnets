@@ -6,11 +6,23 @@ public class Bullet : MonoBehaviour {
     {
         if(coll.CompareTag("Particle"))
         {
-            //Don't destroy just deactivate
             Manager.particleAmount--;
             coll.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
+    }
+
+    void OnEnable() {
+        Invoke("Disable", 10f);
+    }
+
+    void Disable() {
+        gameObject.SetActive(false);
+    }
+
+    void OnDisable()
+    {
+        CancelInvoke();
     }
 
 }
