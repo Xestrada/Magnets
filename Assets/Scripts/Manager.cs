@@ -9,14 +9,18 @@ public class Manager : MonoBehaviour {
     public CameraSetup cam;
     public TouchControls controls;
     public GameObject playButton;
-    public static int particleAmount;
+    public UI ui;
+    int explosionChance;
+    //public static int particleAmount;
     bool playing;
     float startTime;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
-        particleAmount = fluid.ParticleAmount();
-       // fluid.Spawn();
+        //particleAmount = fluid.ParticleAmount();
+        // fluid.Spawn();
+
+        ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
         //Set Up Borders
         borders[0].SetPosition(new Vector2(0, cam.CameraY()));
@@ -45,6 +49,8 @@ public class Manager : MonoBehaviour {
         fluid.Spawn();
         cannons[0].Activate();
         startTime = Time.fixedTime;
+        
+        ui.StartTime = startTime;
         controls.isPlaying = true;
         playButton.SetActive(false);
     }
@@ -53,8 +59,10 @@ public class Manager : MonoBehaviour {
         //Will fix up later
         if (playing)
         {
-            if (Random.Range(0, 20) == 5)
+            explosionChance = Random.Range(0, 20);
+            if (explosionChance == 5)
             {
+                //Debug.Log("Activate Explosion");
                 for (int i = 0; i < explosions.Length; i++)
                 {
                     if (!explosions[i].gameObject.activeSelf)
@@ -71,8 +79,9 @@ public class Manager : MonoBehaviour {
                 cannons[1].Activate();
             if (Time.fixedTime - startTime > 15)
                 cannons[3].Activate();
-            if (particleAmount == 0)
+            if (fluid.numberActive() == 0)
             {
+                ui.StartTime = 0;
                 playing = false;
             }
         }

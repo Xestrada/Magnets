@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\Magnet.cs" />
     <Compile Include="Assets\Scripts\Manager.cs" />
     <Compile Include="Assets\Scripts\TouchControls.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />

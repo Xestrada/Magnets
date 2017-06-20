@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour {
 
     public void Activate(float x, float y)
     {
-        transform.position = new Vector2(Random.Range(-x, x), Random.Range(-y, y));
+        transform.position = new Vector2(Random.Range(-x + .5f, x - .5f), Random.Range(-y + .5f, y - .5f));
         explosionText.text = "" + 3;
         Timing.RunCoroutine(StartExplosion());
     }

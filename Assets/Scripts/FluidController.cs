@@ -18,6 +18,19 @@ public class FluidController : MonoBehaviour {
         return particles.Length;
     }
 
+    public int numberActive()
+    {
+        int x = 0;
+        for(int i = 0; i < particles.Length; i++)
+        {
+            if (particles[i].activeSelf)
+            {
+                x++;
+            }
+        }
+        return x;
+    }
+
     //Use These Coroutines
     IEnumerator<float> _spawn()
     {
