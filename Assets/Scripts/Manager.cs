@@ -9,6 +9,7 @@ public class Manager : MonoBehaviour {
     public CameraSetup cam;
     public TouchControls controls;
     public GameObject playButton;
+    public GameObject restartButton;
     public UI ui;
     int explosionChance;
     //public static int particleAmount;
@@ -45,6 +46,11 @@ public class Manager : MonoBehaviour {
 
     public void Play()
     {
+        if (restartButton.activeSelf)
+        {
+            restartButton.SetActive(false);
+        }
+        ui.ResetTime();
         playing = true;
         fluid.Spawn();
         cannons[0].Activate();
@@ -53,6 +59,14 @@ public class Manager : MonoBehaviour {
         ui.StartTime = startTime;
         controls.isPlaying = true;
         playButton.SetActive(false);
+    }
+
+    void DeactivateCannons()
+    {
+        for(int i = 0; i < cannons.Length; i++)
+        {
+            cannons[i].Deactivate();
+        }
     }
 
 	void FixedUpdate () {
@@ -83,6 +97,8 @@ public class Manager : MonoBehaviour {
             {
                 ui.StartTime = 0;
                 playing = false;
+                DeactivateCannons();
+                restartButton.SetActive(true);
             }
         }
     }

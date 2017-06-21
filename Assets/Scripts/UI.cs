@@ -23,6 +23,11 @@ public class UI : MonoBehaviour {
         }
     }
 
+    public void ResetTime()
+    {
+        time.text = "" + 0;
+    }
+
     void Start()
     {
         time.gameObject.transform.position = new Vector2(maxEdges.x - 0.34f, maxEdges.y - 1.0f);
