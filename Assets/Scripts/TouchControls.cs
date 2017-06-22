@@ -3,7 +3,6 @@
 public class TouchControls : MonoBehaviour {
 
     public Magnet[] magnets;
-    bool allOff = true;
     bool on = false;
 
     int FindUnusedMagnet()

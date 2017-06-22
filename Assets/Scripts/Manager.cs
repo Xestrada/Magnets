@@ -3,14 +3,18 @@
 public class Manager : MonoBehaviour {
 
     public FluidController fluid;
+
+    //Cannons and Borders
     public Cannon[] cannons;
     public Border[] borders;
+
     public Explosion[] explosions;
     public CameraSetup cam;
     public TouchControls controls;
     public GameObject playButton;
     public GameObject restartButton;
     public UI ui;
+    public GameTime time;
     int explosionChance;
     //public static int particleAmount;
     bool playing;
@@ -40,22 +44,24 @@ public class Manager : MonoBehaviour {
         cannons[1].SetLimits(cam.CameraY() + .02f);
         cannons[2].SetLimits(cam.CameraX() + .02f);
         cannons[3].SetLimits(cam.CameraX() + .02f);
-        //Play();
 
     }
 
     public void Play()
     {
+        playing = true;
         if (restartButton.activeSelf)
         {
             restartButton.SetActive(false);
         }
+
+        //Sets Up Play Scene
+        time.Setup();
         ui.ResetTime();
-        playing = true;
+        ResetCannons();
         fluid.Spawn();
         cannons[0].Activate();
         startTime = Time.fixedTime;
-        
         ui.StartTime = startTime;
         controls.isPlaying = true;
         playButton.SetActive(false);
@@ -69,14 +75,21 @@ public class Manager : MonoBehaviour {
         }
     }
 
+    void ResetCannons()
+    {
+        for (int i = 0; i < cannons.Length; i++)
+        {
+            cannons[i].CannonReset();
+        }
+    }
+
 	void FixedUpdate () {
-        //Will fix up later
         if (playing)
         {
+            //Checks for explosions
             explosionChance = Random.Range(0, 20);
             if (explosionChance == 5)
             {
-                //Debug.Log("Activate Explosion");
                 for (int i = 0; i < explosions.Length; i++)
                 {
                     if (!explosions[i].gameObject.activeSelf)
@@ -87,18 +100,20 @@ public class Manager : MonoBehaviour {
                     }
                 }
             }
-            if (Time.fixedTime - startTime > 5)
+            if (!cannons[2].IsActivated() && GameTime.Time() > 5)
                 cannons[2].Activate();
-            if (Time.fixedTime - startTime > 10)
+            if (!cannons[1].IsActivated() && GameTime.Time() > 10)
                 cannons[1].Activate();
-            if (Time.fixedTime - startTime > 15)
+            if (!cannons[3].IsActivated() && GameTime.Time() > 15)
                 cannons[3].Activate();
+            //Once Player Loses
             if (fluid.numberActive() == 0)
             {
                 ui.StartTime = 0;
                 playing = false;
                 DeactivateCannons();
                 restartButton.SetActive(true);
+                time.Stop();
             }
         }
     }

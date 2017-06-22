@@ -10,9 +10,16 @@ public class Cannon : MonoBehaviour {
     private Vector3 pos1;
     private Vector3 pos2;
     public GameObject bullet;
+    public Transform originalTrans;
+
+    //Cannon Hole Positioning
     public Transform trans;
+
+    //Bullet List
     private GameObject[] bullets;
     private GameObject obj;
+
+
     private bool flag;
     private bool rotate_flag;
     private bool fire = true;
@@ -21,8 +28,10 @@ public class Cannon : MonoBehaviour {
     private float max_firing_speed = 5;
     private float max_bullet_speed = 1;
 
+    //Pool in the Scene
     void Start() {
         bullets = new GameObject[50];
+        originalTrans = transform;
         for(int i = 0; i < bullets.Length; i++) {
             GameObject obj = Instantiate(bullet);
             obj.SetActive(false);
@@ -30,7 +39,7 @@ public class Cannon : MonoBehaviour {
         }
     }
 
-    //Cannon Should move into the screen and then move. It should also pivot
+    //Cannon Should move into the screen and then move.
     void FixedUpdate() {
         if (active) {
             if (fire) Timing.RunCoroutine(FireBullet(max_firing_speed));
@@ -70,7 +79,7 @@ public class Cannon : MonoBehaviour {
     }
 
     void RotationalMovement() {
-        if (Time.fixedTime > 30) {
+        if (GameTime.Time() > 30) {
             if (!rotate_flag) {
                 float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, rot1, 10 * Time.fixedDeltaTime);
                 transform.eulerAngles = new Vector3(0, 0, angle);
@@ -82,15 +91,22 @@ public class Cannon : MonoBehaviour {
     }
 
     void CannonUpgrade() {
-        if (Time.fixedTime > 70f) {
+        if (GameTime.Time() > 70f) {
             max_moving_speed = 7f;
             max_firing_speed = 7f;
             max_bullet_speed = 3f;
-        } else if (Time.fixedTime > 30f) {
+        } else if (GameTime.Time() > 30f) {
             max_moving_speed = 5f;
             max_firing_speed = 6f;
             max_bullet_speed = 2f;
         }
+    }
+
+    //Resets to Cannon's default position
+    public void CannonReset()
+    {
+        transform.position = originalTrans.position;
+        transform.rotation = originalTrans.rotation;
     }
 
     //Changed to New Coroutine
@@ -108,6 +124,9 @@ public class Cannon : MonoBehaviour {
                 break;
             }
         }
+
+
+        //Pool the bullets and use the new method to get the rigidbody
         if (from_pool != -1) {
             bullets[from_pool].GetComponent<Rigidbody2D>().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
         }
@@ -122,6 +141,11 @@ public class Cannon : MonoBehaviour {
 
     public void Deactivate() {
         active = false;
+    }
+
+    public bool IsActivated()
+    {
+        return active;
     }
 
     //Use this to set the position of the top and bottom cannons

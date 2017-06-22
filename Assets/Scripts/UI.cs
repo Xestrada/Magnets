@@ -37,7 +37,7 @@ public class UI : MonoBehaviour {
 	void FixedUpdate () {
         if (startTime > 0)
         {
-            time.text = "" + (Mathf.FloorToInt(((Time.fixedTime - startTime)*100)))/100f;
+            time.text = "" + GameTime.DisplayableTime();
         }else if (!time.text.Equals(""))
         {
             time.text = time.text;

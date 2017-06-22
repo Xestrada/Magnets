@@ -2,6 +2,8 @@
 
 public class Bullet : MonoBehaviour {
 
+    public Rigidbody2D rb;
+
 	void OnTriggerEnter2D(Collider2D coll)
     {
         if(coll.CompareTag("Particle"))
@@ -23,6 +25,11 @@ public class Bullet : MonoBehaviour {
     void OnDisable()
     {
         CancelInvoke();
+    }
+
+    public Rigidbody2D GetRigidBody()
+    {
+        return rb;
     }
 
 }
