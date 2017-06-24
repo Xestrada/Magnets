@@ -39,9 +39,23 @@ public class Cannon : MonoBehaviour {
             obj.SetActive(false);
             bullets[i] = obj;
         }
+
+        //Determines where they should move up from
+        if(dir.x != 0)
+        {
+            //0.5f represents how much they should move into the screen. change how you see fit
+            moveOntoScreen = new Vector2(transform.position.x + dir.x* 0.5f, 0);
+            pos1 = new Vector3(moveOntoScreen.x, pos1.y, 0);
+            pos2 = new Vector3(moveOntoScreen.x, pos2.y, 0);
+        }
+        else
+        {
+            moveOntoScreen = new Vector2(0, transform.position.y + dir.y * 0.5f);
+            pos1 = new Vector3(pos1.x, moveOntoScreen.y, 0);
+            pos2 = new Vector3(pos2.x, moveOntoScreen.y,0);
+        }
     }
 
-    //Cannon Should move into the screen and then move.
     void FixedUpdate() {
         if (active) {
             if (fire) Timing.RunCoroutine(FireBullet(max_firing_speed));
@@ -51,7 +65,7 @@ public class Cannon : MonoBehaviour {
         }
   
 	}
-
+    //Moves them onto the screen
     IEnumerator<float> _moveUp()
     {
         float seconds = 1.0f;
@@ -60,7 +74,7 @@ public class Cannon : MonoBehaviour {
         while (t <= 1.0f)
         {
             t += Time.deltaTime / seconds;
-            //transform.position = Vector2.Lerp(pos, moveOntoScreen, Mathf.SmoothStep(0.0f, 1.0f, t));
+            transform.position = Vector2.Lerp(pos, moveOntoScreen, Mathf.SmoothStep(0.0f, 1.0f, t));
             yield return Timing.WaitForSeconds(.01f);
         }
     }
@@ -93,6 +107,7 @@ public class Cannon : MonoBehaviour {
         }
     }
 
+    //They should rotate fatser
     void RotationalMovement() {
         if (GameTime.Time() > 30) {
             if (!rotate_flag) {
@@ -105,6 +120,7 @@ public class Cannon : MonoBehaviour {
         }
     }
 
+    //Make cannons fatser and bullets faster
     void CannonUpgrade() {
         if (GameTime.Time() > 70f) {
             max_moving_speed = 7f;
@@ -124,7 +140,6 @@ public class Cannon : MonoBehaviour {
         transform.rotation = originalTrans.rotation;
     }
 
-    //Changed to New Coroutine
     IEnumerator<float> FireBullet(float speed) {
         fire = false;
         float rand = Random.Range(2, speed);
