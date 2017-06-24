@@ -28,6 +28,8 @@ public class Cannon : MonoBehaviour {
     private float max_firing_speed = 5;
     private float max_bullet_speed = 1;
 
+    Vector2 moveOntoScreen;
+
     //Pool in the Scene
     void Start() {
         bullets = new GameObject[50];
@@ -49,6 +51,19 @@ public class Cannon : MonoBehaviour {
         }
   
 	}
+
+    IEnumerator<float> _moveUp()
+    {
+        float seconds = 1.0f;
+        float t = 0;
+        Vector2 pos = transform.position;
+        while (t <= 1.0f)
+        {
+            t += Time.deltaTime / seconds;
+            //transform.position = Vector2.Lerp(pos, moveOntoScreen, Mathf.SmoothStep(0.0f, 1.0f, t));
+            yield return Timing.WaitForSeconds(.01f);
+        }
+    }
 
     void MovementFlag() {
         if (transform.position.Equals(pos1)) {
@@ -136,6 +151,7 @@ public class Cannon : MonoBehaviour {
 
     //Should only Activate Once
     public void Activate() {
+        Timing.RunCoroutine(_moveUp());
         active = true;
     }
 
