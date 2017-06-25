@@ -10,7 +10,8 @@ public class Cannon : MonoBehaviour {
     private Vector3 pos1;
     private Vector3 pos2;
     public GameObject bullet;
-    public Transform originalTrans;
+    Vector2 originalPos;
+    Quaternion originalRotation;
 
     //Cannon Hole Positioning
     public Transform trans;
@@ -25,15 +26,17 @@ public class Cannon : MonoBehaviour {
     private bool fire = true;
     private bool active = false;
     private float max_moving_speed = 4;
+    //The smaller the faster it fires
     private float max_firing_speed = 5;
-    private float max_bullet_speed = 1;
+    private float max_bullet_speed = 5;
 
     Vector2 moveOntoScreen;
 
     //Pool in the Scene
     void Start() {
         bullets = new GameObject[50];
-        originalTrans = transform;
+        originalPos = transform.position;
+        originalRotation = transform.rotation;
         for(int i = 0; i < bullets.Length; i++) {
             GameObject obj = Instantiate(bullet);
             obj.SetActive(false);
@@ -122,27 +125,30 @@ public class Cannon : MonoBehaviour {
 
     //Make cannons fatser and bullets faster
     void CannonUpgrade() {
-        if (GameTime.Time() > 70f) {
+        if (GameTime.Time() > 20f) {
+            max_moving_speed = 14f;
+            max_firing_speed = 0.5f;
+            max_bullet_speed = 10f;
+        } else if (GameTime.Time() > 10f) {
             max_moving_speed = 7f;
-            max_firing_speed = 7f;
-            max_bullet_speed = 3f;
-        } else if (GameTime.Time() > 30f) {
-            max_moving_speed = 5f;
-            max_firing_speed = 6f;
-            max_bullet_speed = 2f;
+            max_firing_speed = 1f;
+            max_bullet_speed = 5f;
         }
     }
 
-    //Resets to Cannon's default position
+    //Resets to Cannon default settings
     public void CannonReset()
     {
-        transform.position = originalTrans.position;
-        transform.rotation = originalTrans.rotation;
-    }
+        transform.position = originalPos;
+        transform.rotation = originalRotation;
+        max_moving_speed = 4;
+        max_firing_speed = 5;
+        max_bullet_speed = 5;
+}
 
     IEnumerator<float> FireBullet(float speed) {
         fire = false;
-        float rand = Random.Range(2, speed);
+        float rand = Random.Range(0.2f, speed);
         yield return Timing.WaitForSeconds(rand);
         int from_pool = -1;
         for(int i = 0; i < bullets.Length; i++) {
