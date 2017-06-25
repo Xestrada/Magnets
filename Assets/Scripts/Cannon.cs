@@ -112,7 +112,7 @@ public class Cannon : MonoBehaviour {
 
     //They should rotate fatser
     void RotationalMovement() {
-        if (GameTime.Time() > 30) {
+        if (GameTime.Time() > 25f) {
             if (!rotate_flag) {
                 float angle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, rot1, 10 * Time.fixedDeltaTime);
                 transform.eulerAngles = new Vector3(0, 0, angle);
@@ -126,13 +126,13 @@ public class Cannon : MonoBehaviour {
     //Make cannons fatser and bullets faster
     void CannonUpgrade() {
         if (GameTime.Time() > 20f) {
-            max_moving_speed = 14f;
-            max_firing_speed = 0.5f;
-            max_bullet_speed = 10f;
+            max_moving_speed = 12f;
+            max_firing_speed = 0.8f;
+            max_bullet_speed = 8f;
         } else if (GameTime.Time() > 10f) {
-            max_moving_speed = 7f;
-            max_firing_speed = 1f;
-            max_bullet_speed = 5f;
+            max_moving_speed = 6f;
+            max_firing_speed = 1.5f;
+            max_bullet_speed = 4f;
         }
     }
 

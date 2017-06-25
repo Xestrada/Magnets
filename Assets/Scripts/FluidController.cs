@@ -37,7 +37,7 @@ public class FluidController : MonoBehaviour {
         for(int i = 0; i < particles.Length; i++)
         {
             particles[i].SetActive(true);
-            particles[i].transform.position = new Vector2(Random.Range(.1f, .3f), Random.Range(.1f, .3f));
+            particles[i].transform.position = new Vector2(Random.Range(.1f, .35f), Random.Range(.1f, .35f));
             yield return Timing.WaitForSeconds(0.05f);
         }
     }
