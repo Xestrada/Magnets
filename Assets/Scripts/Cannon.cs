@@ -82,6 +82,8 @@ public class Cannon : MonoBehaviour {
         }
     }
 
+
+
     void MovementFlag() {
         if (transform.position.Equals(pos1)) {
             flag = true;
@@ -144,7 +146,7 @@ public class Cannon : MonoBehaviour {
         max_moving_speed = 4;
         max_firing_speed = 5;
         max_bullet_speed = 5;
-}
+    }
 
     IEnumerator<float> FireBullet(float speed) {
         fire = false;

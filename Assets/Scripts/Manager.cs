@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using MovementEffects;
+using UnityEngine.Advertisements;
 
 public class Manager : MonoBehaviour {
 
@@ -11,19 +14,18 @@ public class Manager : MonoBehaviour {
     public Explosion[] explosions;
     public CameraSetup cam;
     public TouchControls controls;
-    public GameObject playButton;
-    public GameObject restartButton;
     public UI ui;
     public GameTime time;
+    public Ads ads;
     int explosionChance;
     //public static int particleAmount;
     bool playing;
+    bool continued;
     float startTime;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
-        //particleAmount = fluid.ParticleAmount();
-        // fluid.Spawn();
+        continued = false;
 
         ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
@@ -50,9 +52,9 @@ public class Manager : MonoBehaviour {
     public void Play()
     {
         playing = true;
-        if (restartButton.activeSelf)
+        if (ui.restartButton.activeSelf)
         {
-            restartButton.SetActive(false);
+            ui.RestartButton(false);
         }
 
         //Sets Up Play Scene
@@ -64,7 +66,27 @@ public class Manager : MonoBehaviour {
         startTime = Time.fixedTime;
         ui.StartTime = startTime;
         controls.isPlaying = true;
-        playButton.SetActive(false);
+        ui.PlayButton(false);
+    }
+
+    public void Continue()
+    {
+        continued = true;
+        playing = true;
+        ui.RestartButton(false);
+        ui.AdButton(false);
+        fluid.SpawnFive();
+        time.ContinueTime();
+        ui.StartTime = Time.fixedTime;
+        Timing.RunCoroutine(_wait(3, true));
+    }
+
+    IEnumerator<float> _wait(int x, bool playing)
+    {
+        yield return Timing.WaitForSeconds(x);
+        controls.isPlaying = playing;
+        ActivateAllCannons();
+        
     }
 
     void DeactivateCannons()
@@ -72,6 +94,14 @@ public class Manager : MonoBehaviour {
         for(int i = 0; i < cannons.Length; i++)
         {
             cannons[i].Deactivate();
+        }
+    }
+
+    void ActivateAllCannons()
+    {
+        for(int i = 0; i < cannons.Length; i++)
+        {
+            cannons[i].Activate();
         }
     }
 
@@ -110,9 +140,14 @@ public class Manager : MonoBehaviour {
             if (fluid.numberActive() == 0)
             {
                 ui.StartTime = 0;
+                ui.StopTime = Time.fixedTime;
                 playing = false;
                 DeactivateCannons();
-                restartButton.SetActive(true);
+                ui.RestartButton(true);
+                if (!continued && Advertisement.IsReady("rewardedVideo"))
+                {
+                    ui.AdButton(true);
+                }
                 time.Stop();
             }
         }

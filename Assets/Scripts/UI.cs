@@ -5,13 +5,41 @@ public class UI : MonoBehaviour {
 
     public Text time;
     float startTime;
+    float stopTime;
     Vector2 maxEdges;
-	
-	public float StartTime
+
+    public GameObject playButton;
+    public GameObject restartButton;
+    public GameObject adButton;
+
+    public void PlayButton(bool x)
+    {
+        playButton.SetActive(x);
+    }
+
+    public void RestartButton(bool x)
+    {
+        restartButton.SetActive(x);
+    }
+
+    public void AdButton(bool x)
+    {
+        adButton.SetActive(x);
+    }
+
+    public float StartTime
     {
         set
         {
             startTime = value;
+        }
+    }
+
+    public float StopTime
+    {
+        set
+        {
+            stopTime = value;
         }
     }
 

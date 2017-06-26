@@ -9,7 +9,12 @@ public class FluidController : MonoBehaviour {
     //Spawn In Particles
     public void Spawn()
     {
-        Timing.RunCoroutine(_spawn());
+        Timing.RunCoroutine(_spawn(false));
+    }
+
+    public void SpawnFive()
+    {
+        Timing.RunCoroutine(_spawn(true));
     }
 
     //In Case we Change Particle Amount Later
@@ -31,10 +36,11 @@ public class FluidController : MonoBehaviour {
         return x;
     }
 
-    //Use These Coroutines
-    IEnumerator<float> _spawn()
+    //Use These Coroutines (Spawns five particles if ad was watched)
+    IEnumerator<float> _spawn(bool five)
     {
-        for(int i = 0; i < particles.Length; i++)
+        int x = five ? 5 : particles.Length;
+        for(int i = 0; i < x; i++)
         {
             particles[i].SetActive(true);
             particles[i].transform.position = new Vector2(Random.Range(.1f, .35f), Random.Range(.1f, .35f));
