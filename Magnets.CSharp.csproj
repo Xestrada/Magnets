@@ -84,12 +84,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FX Mega Pack 2\Scripts\SmoothCameraOrbit.cs" />
+    <Compile Include="Assets\Scripts\Border.cs" />
     <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\CameraSetup.cs" />
     <Compile Include="Assets\Scripts\Cannon.cs" />
+    <Compile Include="Assets\Scripts\Explosion.cs" />
+    <Compile Include="Assets\Scripts\FluidController.cs" />
+    <Compile Include="Assets\Scripts\GameTime.cs" />
+    <Compile Include="Assets\Scripts\Magnet.cs" />
+    <Compile Include="Assets\Scripts\Manager.cs" />
+    <Compile Include="Assets\Scripts\Particle.cs" />
     <Compile Include="Assets\Scripts\TouchControls.cs" />
-    <Compile Include="Assets\Scripts\fluidSpawner.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />
+    <None Include="Assets\FX Mega Pack 2\Scripts\Simple Particle Scaler\Simple Particle Scaler - Readme.txt" />
+    <None Include="Assets\FX Mega Pack 2\Shaders\Mobile Vertex Color Cull Off.shader" />
     <None Include="Assets\SpriteSharp\Editor\Resources\SpriteSharpPersistentMarker.txt" />
     <None Include="Assets\SpriteSharp\License.txt" />
     <None Include="Assets\SpriteSharp\Resources\Shaders\Sprites-Opaque.shader" />

@@ -126,9 +126,9 @@ public class Cannon : MonoBehaviour {
     //Make cannons fatser and bullets faster
     void CannonUpgrade() {
         if (GameTime.Time() > 20f) {
-            max_moving_speed = 12f;
-            max_firing_speed = 0.8f;
-            max_bullet_speed = 8f;
+            max_moving_speed = 9f;
+            max_firing_speed = 1.0f;
+            max_bullet_speed = 5f;
         } else if (GameTime.Time() > 10f) {
             max_moving_speed = 6f;
             max_firing_speed = 1.5f;
