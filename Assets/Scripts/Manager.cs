@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using MovementEffects;
-using UnityEngine.Advertisements;
 
 public class Manager : MonoBehaviour {
 
@@ -52,11 +51,7 @@ public class Manager : MonoBehaviour {
     public void Play()
     {
         playing = true;
-        if (ui.restartButton.activeSelf)
-        {
-            ui.RestartButton(false);
-        }
-
+        ui.ReadyGame();
         //Sets Up Play Scene
         time.Setup();
         ui.ResetTime();
@@ -66,15 +61,13 @@ public class Manager : MonoBehaviour {
         startTime = Time.fixedTime;
         ui.StartTime = startTime;
         controls.isPlaying = true;
-        ui.PlayButton(false);
     }
 
     public void Continue()
     {
         continued = true;
         playing = true;
-        ui.RestartButton(false);
-        ui.AdButton(false);
+        ui.ReadyGame();
         fluid.SpawnFive();
         time.ContinueTime();
         ui.StartTime = Time.fixedTime;
@@ -143,11 +136,7 @@ public class Manager : MonoBehaviour {
                 ui.StopTime = Time.fixedTime;
                 playing = false;
                 DeactivateCannons();
-                ui.RestartButton(true);
-                if (!continued && Advertisement.IsReady("rewardedVideo"))
-                {
-                    ui.AdButton(true);
-                }
+                ui.LoseGame();
                 time.Stop();
             }
         }

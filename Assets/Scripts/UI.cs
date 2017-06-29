@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Advertisements;
 
 public class UI : MonoBehaviour {
 
@@ -10,7 +11,9 @@ public class UI : MonoBehaviour {
 
     public GameObject playButton;
     public GameObject restartButton;
-    public GameObject adButton;
+    public Button adButton;
+    public Button signInButton;
+    public Button leaderboards;
 
     public void PlayButton(bool x)
     {
@@ -24,7 +27,24 @@ public class UI : MonoBehaviour {
 
     public void AdButton(bool x)
     {
-        adButton.SetActive(x);
+        adButton.gameObject.SetActive(x);
+    }
+
+    public void ReadyGame()
+    {
+        adButton.gameObject.SetActive(false);
+        restartButton.SetActive(false);
+        playButton.SetActive(false);
+        leaderboards.gameObject.SetActive(false);
+        signInButton.gameObject.SetActive(false);
+    }
+
+    public void LoseGame()
+    {
+        adButton.gameObject.SetActive(true);
+        restartButton.SetActive(true);
+        leaderboards.gameObject.SetActive(true);
+        signInButton.gameObject.SetActive(true);
     }
 
     public float StartTime
@@ -69,6 +89,26 @@ public class UI : MonoBehaviour {
         }else if (!time.text.Equals(""))
         {
             time.text = time.text;
+        }
+
+        if (GooglePlay.signedIn && !leaderboards.IsInteractable() && signInButton.IsInteractable())
+        {
+            leaderboards.interactable = true;
+            signInButton.interactable = false;
+        }
+        else
+        {
+            leaderboards.interactable = false;
+            signInButton.interactable = true;
+        }
+
+        if (!Advertisement.IsReady("rewardedVideo") && adButton.IsInteractable())
+        {
+            adButton.interactable = false;
+        }
+        else
+        {
+            adButton.interactable = true;
         }
 	}
 }
