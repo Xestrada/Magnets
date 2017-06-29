@@ -31,6 +31,7 @@ public class Cannon : MonoBehaviour {
     private float max_bullet_speed = 5;
 
     Vector2 moveOntoScreen;
+    bool activated;
 
     //Pool in the Scene
     void Start() {
@@ -91,6 +92,14 @@ public class Cannon : MonoBehaviour {
             flag = false;
         }
         Movement();
+    }
+
+    public bool WasActivated
+    {
+        get
+        {
+            return activated;
+        }
     }
 
     void RotationFlag() {
@@ -175,6 +184,12 @@ public class Cannon : MonoBehaviour {
     //Should only Activate Once
     public void Activate() {
         Timing.RunCoroutine(_moveUp());
+        active = true;
+        activated = true;
+    }
+
+    public void ReActivate()
+    {
         active = true;
     }
 

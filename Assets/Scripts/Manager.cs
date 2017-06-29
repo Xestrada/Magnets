@@ -78,7 +78,7 @@ public class Manager : MonoBehaviour {
     {
         yield return Timing.WaitForSeconds(x);
         controls.isPlaying = playing;
-        ActivateAllCannons();
+        CheckAllCannons();
         
     }
 
@@ -90,11 +90,15 @@ public class Manager : MonoBehaviour {
         }
     }
 
-    void ActivateAllCannons()
+    void CheckAllCannons()
     {
         for(int i = 0; i < cannons.Length; i++)
         {
-            cannons[i].Activate();
+            if (cannons[i].WasActivated)
+            {
+                cannons[i].ReActivate();
+            }
+            
         }
     }
 
@@ -123,11 +127,11 @@ public class Manager : MonoBehaviour {
                     }
                 }
             }
-            if (!cannons[2].IsActivated() && GameTime.Time() > 5)
+            if (!cannons[2].IsActivated() && GameTime.Time() > 5 && !cannons[2].WasActivated)
                 cannons[2].Activate();
-            if (!cannons[1].IsActivated() && GameTime.Time() > 10)
+            if (!cannons[1].IsActivated() && GameTime.Time() > 10 && !cannons[1].WasActivated)
                 cannons[1].Activate();
-            if (!cannons[3].IsActivated() && GameTime.Time() > 15)
+            if (!cannons[3].IsActivated() && GameTime.Time() > 15 && !cannons[3].WasActivated)
                 cannons[3].Activate();
             //Once Player Loses
             if (fluid.numberActive() == 0)
