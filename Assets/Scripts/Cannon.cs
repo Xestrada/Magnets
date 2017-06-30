@@ -9,17 +9,14 @@ public class Cannon : MonoBehaviour {
     public Vector2 dir;
     private Vector3 pos1;
     private Vector3 pos2;
-    public GameObject bullet;
     Vector2 originalPos;
     Quaternion originalRotation;
 
     //Cannon Hole Positioning
     public Transform trans;
-
+    
     //Bullet List
-    private GameObject[] bullets;
-    private GameObject obj;
-
+    Bullet[] bullets;
 
     private bool flag;
     private bool rotate_flag;
@@ -35,14 +32,8 @@ public class Cannon : MonoBehaviour {
 
     //Pool in the Scene
     void Start() {
-        bullets = new GameObject[50];
         originalPos = transform.position;
         originalRotation = transform.rotation;
-        for(int i = 0; i < bullets.Length; i++) {
-            GameObject obj = Instantiate(bullet);
-            obj.SetActive(false);
-            bullets[i] = obj;
-        }
 
         //Determines where they should move up from
         if(dir.x != 0)
@@ -157,25 +148,35 @@ public class Cannon : MonoBehaviour {
         max_bullet_speed = 5;
     }
 
+    public void SetBullets(Bullet[] b)
+    {
+        bullets = b;
+    }
+
     IEnumerator<float> FireBullet(float speed) {
         fire = false;
         float rand = Random.Range(0.2f, speed);
         yield return Timing.WaitForSeconds(rand);
         int from_pool = -1;
-        for(int i = 0; i < bullets.Length; i++) {
-            if (!bullets[i].activeInHierarchy) {
-                bullets[i].transform.position = trans.position;
-                bullets[i].transform.rotation = trans.rotation;
-                bullets[i].SetActive(true);
-                from_pool = i;
-                break;
+        if (active)
+        {
+            for (int i = 0; i < bullets.Length; i++)
+            {
+                if (!bullets[i].gameObject.activeInHierarchy)
+                {
+                    bullets[i].transform.position = trans.position;
+                    bullets[i].transform.rotation = trans.rotation;
+                    bullets[i].gameObject.SetActive(true);
+                    from_pool = i;
+                    break;
+                }
             }
         }
 
 
         //Pool the bullets and use the new method to get the rigidbody
         if (from_pool != -1) {
-            bullets[from_pool].GetComponent<Rigidbody2D>().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
+            bullets[from_pool].GetRigidBody().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
         }
         fire = true;
         yield return 0;

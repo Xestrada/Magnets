@@ -21,6 +21,7 @@ public class Explosion : MonoBehaviour {
     {
         for (int i = 3; i > 0; i--)
         {
+            
             explosionText.text = "" + i;
             yield return Timing.WaitForSeconds(1.0f);
         }
