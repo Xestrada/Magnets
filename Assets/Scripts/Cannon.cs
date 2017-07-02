@@ -18,6 +18,9 @@ public class Cannon : MonoBehaviour {
     //Bullet List
     Bullet[] bullets;
 
+    //Smoke Particle
+    public ParticleSystem smoke;
+
     private bool flag;
     private bool rotate_flag;
     private bool fire = true;
@@ -146,6 +149,7 @@ public class Cannon : MonoBehaviour {
         max_moving_speed = 4;
         max_firing_speed = 5;
         max_bullet_speed = 5;
+        activated = false;
     }
 
     public void SetBullets(Bullet[] b)
@@ -178,6 +182,7 @@ public class Cannon : MonoBehaviour {
         if (from_pool != -1) {
             bullets[from_pool].GetRigidBody().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
         }
+        smoke.Play();
         fire = true;
         yield return 0;
     }

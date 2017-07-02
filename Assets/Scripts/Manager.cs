@@ -21,12 +21,13 @@ public class Manager : MonoBehaviour {
     public Bullet[] bullets;
 
     int explosionChance;
-    //public static int particleAmount;
     bool playing;
     float startTime;
+    bool continued;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
+        continued = false;
         ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
         //Set Up Borders
@@ -71,6 +72,7 @@ public class Manager : MonoBehaviour {
 
     public void Continue()
     {
+        continued = true;
         playing = true;
         ui.ReadyGame();
         fluid.SpawnFive();
@@ -145,7 +147,7 @@ public class Manager : MonoBehaviour {
                 ui.StopTime = Time.fixedTime;
                 playing = false;
                 DeactivateCannons();
-                ui.LoseGame();
+                ui.LoseGame(continued);
                 time.Stop();
             }
         }

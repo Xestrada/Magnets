@@ -11,18 +11,9 @@ public class Bullet : MonoBehaviour {
     {
         if(coll.CompareTag("Particle"))
         {
-            //Manager.particleAmount--;
-            coll.gameObject.SetActive(false);
+            coll.gameObject.GetComponent<Particle>().Death();
             gameObject.SetActive(false);
         }
-    }
-
-    //void OnEnable() {
-        //Invoke("Disable", 10f);
-   // }
-
-    void Disable() {
-        gameObject.SetActive(false);
     }
 
     void OnDisable()

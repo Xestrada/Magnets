@@ -4,7 +4,7 @@ using MovementEffects;
 
 public class FluidController : MonoBehaviour {
 
-    public GameObject[] particles;
+    public Particle[] particles;
 
     //Spawn In Particles
     public void Spawn()
@@ -28,7 +28,7 @@ public class FluidController : MonoBehaviour {
         int x = 0;
         for(int i = 0; i < particles.Length; i++)
         {
-            if (particles[i].activeSelf)
+            if (particles[i].Visible())
             {
                 x++;
             }
@@ -42,8 +42,8 @@ public class FluidController : MonoBehaviour {
         int x = five ? 5 : particles.Length;
         for(int i = 0; i < x; i++)
         {
-            particles[i].SetActive(true);
-            particles[i].transform.position = new Vector2(Random.Range(.1f, .35f), Random.Range(.1f, .35f));
+            particles[i].gameObject.SetActive(true);
+            particles[i].transform.position = new Vector2(Random.Range(.15f, .38f), Random.Range(.15f, .38f));
             yield return Timing.WaitForSeconds(0.05f);
         }
     }

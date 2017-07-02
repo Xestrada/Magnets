@@ -39,9 +39,12 @@ public class UI : MonoBehaviour {
         signInButton.gameObject.SetActive(false);
     }
 
-    public void LoseGame()
+    public void LoseGame(bool x)
     {
-        adButton.gameObject.SetActive(true);
+        if (!x)
+        {
+            adButton.gameObject.SetActive(true);
+        }
         restartButton.SetActive(true);
         leaderboards.gameObject.SetActive(true);
         signInButton.gameObject.SetActive(true);

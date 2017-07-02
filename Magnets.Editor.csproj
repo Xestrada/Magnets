@@ -124,6 +124,15 @@
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Google.IOSResolver">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.IOSResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.JarResolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>Assets\PlayServicesResolver\Editor\Google.VersionHandler.dll</HintPath>
+    </Reference>
     <Reference Include="LostPolygon.SpriteSharp">
       <HintPath>Assets\SpriteSharp\Editor\LostPolygon.SpriteSharp.dll</HintPath>
     </Reference>
@@ -138,15 +147,6 @@
     </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
       <HintPath>Assets\UnityAds\UnityEngine.Advertisements.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.IOSResolver">
-      <HintPath>Assets\PlayServicesResolver\Editor\Google.IOSResolver.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.JarResolver">
-      <HintPath>Assets\PlayServicesResolver\Editor\Google.JarResolver.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.VersionHandler">
-      <HintPath>Assets\PlayServicesResolver\Editor\Google.VersionHandler.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-UnityScript">
       <HintPath>Library\ScriptAssemblies\Assembly-UnityScript.dll</HintPath>
@@ -183,9 +183,10 @@
     <Compile Include="Assets\GooglePlayGames\Editor\xcode\Sections.cs" />
     <Compile Include="Assets\GooglePlayGames\Editor\xcode\Serializer.cs" />
     <Compile Include="Assets\GooglePlayGames\Editor\xcode\Utils.cs" />
+    <Compile Include="Assets\Keystore Helper\Editor\AndroidKeystoreLoader.cs" />
+    <Compile Include="Assets\Keystore Helper\Editor\KeystoreHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\FX Mega Pack 2\FX Mega Pack 2 - Readme.txt" />
     <None Include="Assets\FX Mega Pack 2\Scripts\Simple Particle Scaler\Simple Particle Scaler - Readme.txt" />
     <None Include="Assets\FX Mega Pack 2\Shaders\Mobile Vertex Color Cull Off.shader" />
     <None Include="Assets\GooglePlayGames\Editor\template-AndroidManifest.txt" />
