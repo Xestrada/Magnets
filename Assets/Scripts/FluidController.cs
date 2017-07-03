@@ -39,7 +39,7 @@ public class FluidController : MonoBehaviour {
     //Use These Coroutines (Spawns five particles if ad was watched)
     IEnumerator<float> _spawn(bool five)
     {
-        int x = five ? 5 : particles.Length;
+        int x = five ? 6 : particles.Length;
         for(int i = 0; i < x; i++)
         {
             particles[i].gameObject.SetActive(true);

@@ -24,10 +24,12 @@ public class Manager : MonoBehaviour {
     bool playing;
     float startTime;
     bool continued;
+    bool waiting;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
         continued = false;
+        waiting = false;
         ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
         //Set Up Borders
@@ -57,6 +59,7 @@ public class Manager : MonoBehaviour {
 
     public void Play()
     {
+        controls.isPlaying = true;
         playing = true;
         ui.ReadyGame();
         //Sets Up Play Scene
@@ -72,6 +75,8 @@ public class Manager : MonoBehaviour {
 
     public void Continue()
     {
+        Time.timeScale = 1.0f;
+        controls.isPlaying = true;
         continued = true;
         playing = true;
         ui.ReadyGame();
@@ -83,10 +88,12 @@ public class Manager : MonoBehaviour {
 
     IEnumerator<float> _wait(int x, bool playing)
     {
+        waiting = true;
         yield return Timing.WaitForSeconds(x);
-        controls.isPlaying = playing;
+        waiting = false;
         CheckAllCannons();
-        
+        controls.isPlaying = playing;
+
     }
 
     void DeactivateCannons()
@@ -141,10 +148,11 @@ public class Manager : MonoBehaviour {
             if (!cannons[3].IsActivated() && GameTime.Time() > 15 && !cannons[3].WasActivated)
                 cannons[3].Activate();
             //Once Player Loses
-            if (fluid.numberActive() == 0)
+            if (fluid.numberActive() == 0 && !waiting)
             {
                 ui.StartTime = 0;
                 ui.StopTime = Time.fixedTime;
+                controls.isPlaying = false;
                 playing = false;
                 DeactivateCannons();
                 ui.LoseGame(continued);

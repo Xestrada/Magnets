@@ -9,9 +9,14 @@ public class GooglePlay : MonoBehaviour {
 
 	public static bool signedIn;
 
-	#if UNITY_ANDROID
+#if UNITY_ANDROID
 
-	public void SignIn(){
+    public void Awake()
+    {
+        signedIn = false;
+    }
+
+    public void SignIn(){
 		if (!PlayGamesPlatform.Instance.localUser.authenticated) {
 			PlayGamesPlatform.Instance.Authenticate (SignInCallBack, false);
 		} else {

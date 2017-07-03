@@ -17,13 +17,14 @@ public class Explosion : MonoBehaviour {
         explosionText.text = "" + 3;
         Timing.RunCoroutine(StartExplosion());
     }
+
     IEnumerator<float> StartExplosion()
     {
         for (int i = 3; i > 0; i--)
         {
-            
             explosionText.text = "" + i;
             yield return Timing.WaitForSeconds(1.0f);
+
         }
         explosionText.text = "";
         explosionSystem.Play();

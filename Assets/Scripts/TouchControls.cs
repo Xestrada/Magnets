@@ -62,12 +62,6 @@ public class TouchControls : MonoBehaviour {
                 }
             }
         }
-        //Remove this after finishing
-        else
-        {
-           // magnets[0].gameObject.SetActive(true);
-            //magnets[0].SetPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
 
 	}
 }

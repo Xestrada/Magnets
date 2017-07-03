@@ -30,7 +30,7 @@ public class UnityAdsInitializer : MonoBehaviour {
 		#endif
 
 		if (Advertisement.isSupported && !Advertisement.isInitialized) {
-			Advertisement.Initialize (gameId, false);
+			Advertisement.Initialize (gameId, true);
 		}
 
 

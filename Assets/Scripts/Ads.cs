@@ -18,29 +18,18 @@ public class Ads : MonoBehaviour{
 
     private void HandleShowResult(ShowResult result)
     {
-        Time.timeScale = 1.0f;
         switch (result)
         {
             case ShowResult.Finished:
                 manager.Continue();
                 break;
             case ShowResult.Failed:
-                manager.Continue();
+                Debug.Log("Failed");
+                //manager.Continue();
                 break;
             case ShowResult.Skipped:
                 manager.Continue();
                 break;
         }
     }
-
-
-
-    void Update()
-    {
-
-
-    }
-
-
-
 }

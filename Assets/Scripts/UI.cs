@@ -88,18 +88,24 @@ public class UI : MonoBehaviour {
 	void FixedUpdate () {
         if (startTime > 0)
         {
+            //Creates Displayable Time
             time.text = "" + GameTime.DisplayableTime();
+            if(time.text.Length >= 3 && time.text[time.text.Length - 2].Equals('.'))
+            {
+                time.text += "0";
+            }
         }else if (!time.text.Equals(""))
         {
             time.text = time.text;
         }
 
-        if (GooglePlay.signedIn && !leaderboards.IsInteractable() && signInButton.IsInteractable())
+        if (GooglePlay.signedIn && (!leaderboards.IsInteractable() || signInButton.IsInteractable()))
         {
             leaderboards.interactable = true;
             signInButton.interactable = false;
         }
-        else
+
+        if (!GooglePlay.signedIn && (leaderboards.IsInteractable() || !signInButton.IsInteractable()))
         {
             leaderboards.interactable = false;
             signInButton.interactable = true;
@@ -109,7 +115,8 @@ public class UI : MonoBehaviour {
         {
             adButton.interactable = false;
         }
-        else
+
+        if (Advertisement.IsReady("rewardedVideo") && !adButton.IsInteractable())
         {
             adButton.interactable = true;
         }
