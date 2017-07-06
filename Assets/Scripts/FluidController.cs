@@ -5,16 +5,31 @@ using MovementEffects;
 public class FluidController : MonoBehaviour {
 
     public Particle[] particles;
+    bool spawning;
+    bool spawned;
 
     //Spawn In Particles
     public void Spawn()
     {
+        spawning = true;
         Timing.RunCoroutine(_spawn(false));
     }
 
     public void SpawnFive()
     {
+        spawning = true;
         Timing.RunCoroutine(_spawn(true));
+    }
+
+    public bool HasSpawned()
+    {
+        return !spawning && spawned;
+    }
+
+    public void ResetSpawnInfo()
+    {
+        spawning = false;
+        spawned = false;
     }
 
     //In Case we Change Particle Amount Later
@@ -46,5 +61,7 @@ public class FluidController : MonoBehaviour {
             particles[i].transform.position = new Vector2(Random.Range(.15f, .38f), Random.Range(.15f, .38f));
             yield return Timing.WaitForSeconds(0.05f);
         }
+        spawning = false;
+        spawned = true;
     }
 }

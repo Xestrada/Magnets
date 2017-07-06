@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 60e4df5f3b928a842a49e3faf6975708
+timeCreated: 1499314037
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Alarm Font
+  fontNames:
+  - Alarm Font
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -25,6 +25,7 @@ public class Manager : MonoBehaviour {
     float startTime;
     bool continued;
     bool waiting;
+    bool checkForSpawn;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
@@ -33,10 +34,10 @@ public class Manager : MonoBehaviour {
         ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
         //Set Up Borders
-        borders[0].SetPosition(new Vector2(0, cam.CameraY()));
-        borders[1].SetPosition(new Vector2(0, -cam.CameraY()));
-        borders[2].SetPosition(new Vector2(-cam.CameraX(), 0));
-        borders[3].SetPosition(new Vector2(cam.CameraX(), 0));
+        borders[0].SetPosition(new Vector2(0, cam.CameraY() + .48f));
+        borders[1].SetPosition(new Vector2(0, -cam.CameraY() - .48f));
+        borders[2].SetPosition(new Vector2(-cam.CameraX() - .48f, 0));
+        borders[3].SetPosition(new Vector2(cam.CameraX() + .48f, 0));
 
         //Set Up Cannons
         cannons[0].SetPosition(new Vector2(-cam.CameraX() - 0.42f, 0));
@@ -59,40 +60,32 @@ public class Manager : MonoBehaviour {
 
     public void Play()
     {
-        controls.isPlaying = true;
-        playing = true;
+        checkForSpawn = true;
         ui.ReadyGame();
-        //Sets Up Play Scene
-        time.Setup();
-        ui.ResetTime();
         ResetCannons();
+        //Sets Up Play Scene
         fluid.Spawn();
-        cannons[0].Activate();
-        startTime = Time.fixedTime;
-        ui.StartTime = startTime;
-        controls.isPlaying = true;
     }
 
     public void Continue()
     {
         Time.timeScale = 1.0f;
-        controls.isPlaying = true;
         continued = true;
-        playing = true;
+        waiting = true;
         ui.ReadyGame();
         fluid.SpawnFive();
-        time.ContinueTime();
-        ui.StartTime = Time.fixedTime;
         Timing.RunCoroutine(_wait(3, true));
     }
 
     IEnumerator<float> _wait(int x, bool playing)
     {
-        waiting = true;
         yield return Timing.WaitForSeconds(x);
-        waiting = false;
         CheckAllCannons();
+        time.ContinueTime();
+        ui.StartTime = Time.fixedTime;
         controls.isPlaying = playing;
+        this.playing = true;
+        waiting = false;
 
     }
 
@@ -125,6 +118,23 @@ public class Manager : MonoBehaviour {
     }
 
 	void FixedUpdate () {
+        if (checkForSpawn)
+        {
+            //Only for starting the game not continuing
+            if (fluid.HasSpawned())
+            {
+                fluid.ResetSpawnInfo();
+                controls.isPlaying = true;
+                playing = true;
+                time.Setup();
+                ui.ResetTime();
+                cannons[0].Activate();
+                startTime = Time.fixedTime;
+                ui.StartTime = startTime;
+                checkForSpawn = false;
+            }
+        }
+
         if (playing)
         {
             //Checks for explosions
