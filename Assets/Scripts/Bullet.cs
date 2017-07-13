@@ -26,6 +26,11 @@ public class Bullet : MonoBehaviour {
         return rb;
     }
 
+    public void Spin(float spin)
+    {
+        rb.angularVelocity = spin;
+    }
+
     void FixedUpdate()
     {
         if (!renderer.isVisible)

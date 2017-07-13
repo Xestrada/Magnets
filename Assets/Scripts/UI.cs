@@ -81,7 +81,7 @@ public class UI : MonoBehaviour {
 
     void Start()
     {
-        time.gameObject.transform.position = new Vector2(maxEdges.x - 0.34f, maxEdges.y - 1.0f);
+        time.gameObject.transform.position = new Vector2(maxEdges.x - 0.4f, maxEdges.y - 1.0f);
     }
 
 

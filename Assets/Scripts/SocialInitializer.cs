@@ -12,14 +12,14 @@ public class SocialInitializer : MonoBehaviour {
 #if UNITY_ANDROID
     void Awake()
     {
-        //PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-        //    .Build();
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .Build();
 
-        ////Google Play Debugging
-        //PlayGamesPlatform.DebugLogEnabled = false;
+        //Google Play Debugging
+        PlayGamesPlatform.DebugLogEnabled = false;
 
-        //PlayGamesPlatform.InitializeInstance(config);
-        //PlayGamesPlatform.Activate();
+        PlayGamesPlatform.InitializeInstance(config);
+        PlayGamesPlatform.Activate();
 
 
     }

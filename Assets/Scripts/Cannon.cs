@@ -33,6 +33,9 @@ public class Cannon : MonoBehaviour {
     Vector2 moveOntoScreen;
     bool activated;
 
+    //Audio
+    public AudioSource audio;
+
     //Pool in the Scene
     void Start() {
         originalPos = transform.position;
@@ -131,13 +134,13 @@ public class Cannon : MonoBehaviour {
     //Make cannons fatser and bullets faster
     void CannonUpgrade() {
         if (GameTime.Time() > 20f) {
-            max_moving_speed = 9f;
-            max_firing_speed = 1.0f;
-            max_bullet_speed = 5f;
-        } else if (GameTime.Time() > 10f) {
-            max_moving_speed = 6f;
+            max_moving_speed = 7f;
             max_firing_speed = 1.5f;
             max_bullet_speed = 4f;
+        } else if (GameTime.Time() > 10f) {
+            max_moving_speed = 5f;
+            max_firing_speed = 2.5f;
+            max_bullet_speed = 3f;
         }
     }
 
@@ -181,7 +184,9 @@ public class Cannon : MonoBehaviour {
         //Pool the bullets and use the new method to get the rigidbody
         if (from_pool != -1) {
             bullets[from_pool].GetRigidBody().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
+            bullets[from_pool].Spin(max_bullet_speed*10f);
         }
+        audio.Play();
         smoke.Play();
         fire = true;
         yield return 0;

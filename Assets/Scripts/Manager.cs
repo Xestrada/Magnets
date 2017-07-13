@@ -138,7 +138,7 @@ public class Manager : MonoBehaviour {
         if (playing)
         {
             //Checks for explosions
-            explosionChance = Random.Range(0, 20);
+            explosionChance = Random.Range(0, 25);
             if (explosionChance == 5)
             {
                 for (int i = 0; i < explosions.Length; i++)

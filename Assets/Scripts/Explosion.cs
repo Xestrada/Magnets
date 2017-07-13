@@ -11,9 +11,11 @@ public class Explosion : MonoBehaviour {
     public CircleCollider2D collider;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
+    public AudioSource audio;
+
     public void Activate(float x, float y)
     {
-        transform.position = new Vector2(Random.Range(-x + .5f, x - .5f), Random.Range(-y + .5f, y - .5f));
+        transform.position = new Vector2(Random.Range(-x + 1.0f, x - 1.0f), Random.Range(-y + 1.0f, y - 1.0f));
         explosionText.text = "" + 3;
         Timing.RunCoroutine(StartExplosion());
     }
@@ -28,6 +30,7 @@ public class Explosion : MonoBehaviour {
         }
         explosionText.text = "";
         explosionSystem.Play();
+        audio.Play();
     }
 
     void Update()
