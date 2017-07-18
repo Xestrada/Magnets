@@ -33,8 +33,11 @@ public class Cannon : MonoBehaviour {
     Vector2 moveOntoScreen;
     bool activated;
 
+
     //Audio
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public AudioSource audio;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
     //Pool in the Scene
     void Start() {
@@ -178,18 +181,18 @@ public class Cannon : MonoBehaviour {
                     break;
                 }
             }
-        }
 
-
-        //Pool the bullets and use the new method to get the rigidbody
-        if (from_pool != -1) {
-            bullets[from_pool].GetRigidBody().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
-            bullets[from_pool].Spin(max_bullet_speed*10f);
+            //Pool the bullets and use the new method to get the rigidbody
+            if (from_pool != -1)
+            {
+                bullets[from_pool].GetRigidBody().AddForce(new Vector3(Mathf.Cos((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, Mathf.Sin((transform.eulerAngles.z + 90) * Mathf.PI / 180) * max_bullet_speed, 0), ForceMode2D.Impulse);
+                bullets[from_pool].Spin(max_bullet_speed * 10f);
+            }
+            audio.Play();
+            smoke.Play();
+            fire = true;
+            yield return 0;
         }
-        audio.Play();
-        smoke.Play();
-        fire = true;
-        yield return 0;
     }
 
     //Should only Activate Once

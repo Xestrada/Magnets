@@ -11,13 +11,25 @@ public class Explosion : MonoBehaviour {
     public CircleCollider2D collider;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public AudioSource audio;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+    bool activated;
+
+    private void Start()
+    {
+        activated = false;
+    }
 
     public void Activate(float x, float y)
     {
-        transform.position = new Vector2(Random.Range(-x + 1.0f, x - 1.0f), Random.Range(-y + 1.0f, y - 1.0f));
-        explosionText.text = "" + 3;
-        Timing.RunCoroutine(StartExplosion());
+        if (!activated)
+        {
+            activated = true;
+            transform.position = new Vector2(Random.Range(-x + 1.0f, x - 1.0f), Random.Range(-y + 1.0f, y - 1.0f));
+            explosionText.text = "" + 3;
+            Timing.RunCoroutine(StartExplosion());
+        }
     }
 
     IEnumerator<float> StartExplosion()
@@ -31,6 +43,7 @@ public class Explosion : MonoBehaviour {
         explosionText.text = "";
         explosionSystem.Play();
         audio.Play();
+        activated = false;
     }
 
     void Update()
@@ -38,7 +51,9 @@ public class Explosion : MonoBehaviour {
         if(explosionSystem.isPlaying && !collider.enabled)
         {
             collider.enabled = true;
-        }else if(!explosionSystem.isPlaying && collider.enabled)
+        }
+
+        if (!explosionSystem.isPlaying && collider.enabled)
         {
             collider.enabled = false;
             this.gameObject.SetActive(false);

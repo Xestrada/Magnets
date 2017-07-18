@@ -32,6 +32,8 @@ public class UI : MonoBehaviour {
 
     public void ReadyGame()
     {
+        leaderboards.gameObject.transform.position = new Vector2(-1.0f, -1.0f);
+        signInButton.gameObject.transform.position = new Vector2(-1.0f, -1.0f);
         adButton.gameObject.SetActive(false);
         restartButton.SetActive(false);
         playButton.SetActive(false);
@@ -101,14 +103,14 @@ public class UI : MonoBehaviour {
 
         if (GooglePlay.signedIn && (!leaderboards.IsInteractable() || signInButton.IsInteractable()))
         {
-            leaderboards.interactable = true;
-            signInButton.interactable = false;
+            leaderboards.gameObject.SetActive(true);
+            signInButton.gameObject.SetActive(false);
         }
 
         if (!GooglePlay.signedIn && (leaderboards.IsInteractable() || !signInButton.IsInteractable()))
         {
-            leaderboards.interactable = false;
-            signInButton.interactable = true;
+            leaderboards.gameObject.SetActive(false);
+            signInButton.gameObject.SetActive(true);
         }
 
         if (!Advertisement.IsReady("rewardedVideo") && adButton.IsInteractable())

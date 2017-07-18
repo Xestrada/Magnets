@@ -21,6 +21,7 @@ public class Manager : MonoBehaviour {
     public Bullet[] bullets;
 
     int explosionChance;
+    int explosionAmount;
     bool playing;
     float startTime;
     bool continued;
@@ -31,6 +32,7 @@ public class Manager : MonoBehaviour {
 	void Start () {
         continued = false;
         waiting = false;
+        explosionAmount = 2;
         ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
         //Set Up Borders
@@ -117,6 +119,19 @@ public class Manager : MonoBehaviour {
         }
     }
 
+    int ExplosionsActive()
+    {
+        int amount = 0;
+        for(int i = 0; i < explosions.Length; i++)
+        {
+            if (explosions[i].gameObject.activeSelf)
+            {
+                amount++;
+            }
+        }
+        return amount;
+    }
+
 	void FixedUpdate () {
         if (checkForSpawn)
         {
@@ -143,7 +158,7 @@ public class Manager : MonoBehaviour {
             {
                 for (int i = 0; i < explosions.Length; i++)
                 {
-                    if (!explosions[i].gameObject.activeSelf)
+                    if (!explosions[i].gameObject.activeSelf && explosionAmount > ExplosionsActive())
                     {
                         explosions[i].gameObject.SetActive(true);
                         explosions[i].Activate(cam.CameraX(), cam.CameraY());
@@ -152,11 +167,20 @@ public class Manager : MonoBehaviour {
                 }
             }
             if (!cannons[2].IsActivated() && GameTime.Time() > 5 && !cannons[2].WasActivated)
+            {
+                explosionAmount = 3;
                 cannons[2].Activate();
+            }
             if (!cannons[1].IsActivated() && GameTime.Time() > 10 && !cannons[1].WasActivated)
+            {
+                explosionAmount = 4;
                 cannons[1].Activate();
+            }
             if (!cannons[3].IsActivated() && GameTime.Time() > 15 && !cannons[3].WasActivated)
+            {
+                explosionAmount = 5;
                 cannons[3].Activate();
+            }
             //Once Player Loses
             if (fluid.numberActive() == 0 && !waiting)
             {
