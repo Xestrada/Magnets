@@ -15,6 +15,8 @@ public class UI : MonoBehaviour {
     public Button signInButton;
     public Button leaderboards;
 
+	bool continued;
+
     public void PlayButton(bool x)
     {
         playButton.SetActive(x);
@@ -43,10 +45,8 @@ public class UI : MonoBehaviour {
 
     public void LoseGame(bool x)
     {
-        if (!x)
-        {
-            adButton.gameObject.SetActive(true);
-        }
+		continued = x;
+		adButton.gameObject.SetActive(true);
         restartButton.SetActive(true);
         leaderboards.gameObject.SetActive(true);
         signInButton.gameObject.SetActive(true);
@@ -113,14 +113,19 @@ public class UI : MonoBehaviour {
             signInButton.gameObject.SetActive(true);
         }
 
-        if (!Advertisement.IsReady("rewardedVideo") && adButton.IsInteractable())
+		if (!Advertisement.IsReady("rewardedVideo") && adButton.gameObject.activeSelf)
         {
             adButton.interactable = false;
         }
 
-        if (Advertisement.IsReady("rewardedVideo") && !adButton.IsInteractable())
+		if (Advertisement.IsReady("rewardedVideo") && adButton.gameObject.activeSelf)
         {
-            adButton.interactable = true;
+			if(continued){
+				adButton.interactable = false;
+			}else{
+				adButton.interactable = true;
+			}
+            
         }
 	}
 }

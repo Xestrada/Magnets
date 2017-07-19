@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using MovementEffects;
 
@@ -27,6 +28,9 @@ public class Manager : MonoBehaviour {
     bool continued;
     bool waiting;
     bool checkForSpawn;
+
+	//Countdown after continue
+	public Text countdown;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
@@ -62,6 +66,7 @@ public class Manager : MonoBehaviour {
 
     public void Play()
     {
+		continued = false;
         checkForSpawn = true;
         ui.ReadyGame();
         ResetCannons();
@@ -76,12 +81,19 @@ public class Manager : MonoBehaviour {
         waiting = true;
         ui.ReadyGame();
         fluid.SpawnFive();
-        Timing.RunCoroutine(_wait(3, true));
+        Timing.RunCoroutine(_wait(true));
     }
 
-    IEnumerator<float> _wait(int x, bool playing)
+    IEnumerator<float> _wait(bool playing)
     {
-        yield return Timing.WaitForSeconds(x);
+		
+		countdown.gameObject.SetActive(true);
+		for(int i = 3; i > 0; i--){
+			countdown.text = "" + i;
+			yield return Timing.WaitForSeconds(1.0f);
+
+		}
+		countdown.gameObject.SetActive(false);
         CheckAllCannons();
         time.ContinueTime();
         ui.StartTime = Time.fixedTime;

@@ -58,6 +58,7 @@ public class FluidController : MonoBehaviour {
         for(int i = 0; i < x; i++)
         {
             particles[i].gameObject.SetActive(true);
+			particles[i].SpawnSound();
             particles[i].transform.position = new Vector2(Random.Range(.15f, .38f), Random.Range(.15f, .38f));
             yield return Timing.WaitForSeconds(0.05f);
         }

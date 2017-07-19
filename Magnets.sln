@@ -1,11 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets.Plugins", "Magnets.Plugins.csproj", "{861CFC10-F54A-B88B-4828-C4D15D5CCB59}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets", "Assembly-CSharp-firstpass.csproj", "{57DC90E0-3CDF-46B4-4D02-ED197FD1814F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets", "Magnets.csproj", "{0C2294E2-749B-829D-A884-C571E1030A04}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets", "Assembly-CSharp.csproj", "{A8C10DA5-E547-5445-98FD-16F3D2FE9DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets.Editor", "Magnets.Editor.csproj", "{5EE62A22-185E-98DE-A78C-26DD3B1BA988}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets", "Assembly-CSharp-Editor.csproj", "{5203B1E7-5DA8-C353-6128-856A14B375FE}"
+EndProject
+Project("{BBC7F19E-18C0-4109-1374-F49DD533C13C}") = "Magnets", "Assembly-UnityScript.unityproj", "{10C22688-D0FC-2A33-FE4D-98256F809E0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +15,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C2294E2-749B-829D-A884-C571E1030A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C2294E2-749B-829D-A884-C571E1030A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C2294E2-749B-829D-A884-C571E1030A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C2294E2-749B-829D-A884-C571E1030A04}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57DC90E0-3CDF-46B4-4D02-ED197FD1814F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57DC90E0-3CDF-46B4-4D02-ED197FD1814F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57DC90E0-3CDF-46B4-4D02-ED197FD1814F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57DC90E0-3CDF-46B4-4D02-ED197FD1814F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C10DA5-E547-5445-98FD-16F3D2FE9DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C10DA5-E547-5445-98FD-16F3D2FE9DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C10DA5-E547-5445-98FD-16F3D2FE9DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C10DA5-E547-5445-98FD-16F3D2FE9DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5203B1E7-5DA8-C353-6128-856A14B375FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5203B1E7-5DA8-C353-6128-856A14B375FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5203B1E7-5DA8-C353-6128-856A14B375FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5203B1E7-5DA8-C353-6128-856A14B375FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10C22688-D0FC-2A33-FE4D-98256F809E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10C22688-D0FC-2A33-FE4D-98256F809E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10C22688-D0FC-2A33-FE4D-98256F809E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10C22688-D0FC-2A33-FE4D-98256F809E0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

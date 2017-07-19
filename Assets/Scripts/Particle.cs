@@ -8,6 +8,8 @@ public class Particle : MonoBehaviour {
     public CircleCollider2D collider;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
+	public AudioSource spawnSound;
+
     public void Death()
     {
         particles.Play();
@@ -19,6 +21,10 @@ public class Particle : MonoBehaviour {
     {
         return sprite.isVisible;
     }
+
+	public void SpawnSound(){
+		spawnSound.Play();
+	}
 
     void Update()
     {

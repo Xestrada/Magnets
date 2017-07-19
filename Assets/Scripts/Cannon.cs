@@ -62,7 +62,9 @@ public class Cannon : MonoBehaviour {
 
     void FixedUpdate() {
         if (active) {
-            if (fire) Timing.RunCoroutine(FireBullet(max_firing_speed));
+			if (fire){ 
+				Timing.RunCoroutine(FireBullet(max_firing_speed));
+			}
             MovementFlag();
             RotationFlag();
             CannonUpgrade();
@@ -190,9 +192,9 @@ public class Cannon : MonoBehaviour {
             }
             audio.Play();
             smoke.Play();
-            fire = true;
             yield return 0;
         }
+		fire = true;
     }
 
     //Should only Activate Once
