@@ -14,6 +14,9 @@ public class Explosion : MonoBehaviour {
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public AudioSource audio;
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+
+    public AudioSource beep;
+
     bool activated;
 
     private void Start()
@@ -37,11 +40,15 @@ public class Explosion : MonoBehaviour {
         for (int i = 3; i > 0; i--)
         {
             explosionText.text = "" + i;
+            beep.Play();
             yield return Timing.WaitForSeconds(1.0f);
 
         }
         explosionText.text = "";
-        explosionSystem.Play();
+        if (!explosionSystem.isPlaying)
+        {
+            explosionSystem.Play();
+        }
         if (!audio.isPlaying)
         {
             audio.Play();

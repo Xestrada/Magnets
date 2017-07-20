@@ -10,10 +10,13 @@ public class Particle : MonoBehaviour {
 
     public AudioSource spawnSound;
 
+    public AudioSource death;
+
     bool spawning;
 
     public void Death()
     {
+        death.Play();
         particles.Play();
         collider.enabled = false;
         sprite.enabled = false;
@@ -25,6 +28,7 @@ public class Particle : MonoBehaviour {
     }
 
     public void SpawnSound() {
+        spawnSound.volume = 0.6f;
         spawnSound.Play();
     }
 
@@ -44,6 +48,18 @@ public class Particle : MonoBehaviour {
         }
     }
 
+    //public float SetVolume
+    //{
+    //    get
+    //    {
+    //        return spawnSound.volume;
+    //    }
+    //    set
+    //    {
+    //        spawnSound.volume = value;
+    //    }
+    //}
+
     public float GetPitch()
     {
         return spawnSound.pitch;
@@ -53,6 +69,7 @@ public class Particle : MonoBehaviour {
     {
         if (!spawning && !spawnSound.isPlaying && (!coll.gameObject.tag.Equals("Cannon") || !coll.gameObject.tag.Equals("Explosion")))
         {
+            spawnSound.volume = collider.attachedRigidbody.velocity.magnitude / 4.5f;
             spawnSound.Play();
         }
 

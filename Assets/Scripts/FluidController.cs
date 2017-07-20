@@ -38,7 +38,7 @@ public class FluidController : MonoBehaviour {
         return particles.Length;
     }
 
-    public int numberActive()
+    public int NumberActive()
     {
         int x = 0;
         for(int i = 0; i < particles.Length; i++)

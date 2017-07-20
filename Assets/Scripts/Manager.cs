@@ -31,6 +31,7 @@ public class Manager : MonoBehaviour {
 
 	//Countdown after continue
 	public Text countdown;
+    public AudioSource beep;
 
     //Spawn in Particles and Activate First Cannon
 	void Start () {
@@ -91,6 +92,7 @@ public class Manager : MonoBehaviour {
 		countdown.gameObject.SetActive(true);
 		for(int i = 3; i > 0; i--){
 			countdown.text = "" + i;
+            beep.Play();
 			yield return Timing.WaitForSeconds(1.0f);
 
 		}
@@ -195,7 +197,7 @@ public class Manager : MonoBehaviour {
                 cannons[3].Activate();
             }
             //Once Player Loses
-            if (fluid.numberActive() == 0 && !waiting)
+            if (fluid.NumberActive() == 0 && !waiting)
             {
                 ui.StartTime = 0;
                 ui.StopTime = Time.fixedTime;
