@@ -19,7 +19,7 @@ public class Explosion : MonoBehaviour {
 
     bool activated;
 
-    private void Start()
+    void Start()
     {
         activated = false;
     }
