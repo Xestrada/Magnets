@@ -66,6 +66,7 @@ public class Manager : MonoBehaviour {
 
     public void Play()
     {
+        explosionAmount = 2;
 		continued = false;
         checkForSpawn = true;
         ui.ReadyGame();

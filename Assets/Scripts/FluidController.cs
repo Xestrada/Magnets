@@ -55,12 +55,23 @@ public class FluidController : MonoBehaviour {
     IEnumerator<float> _spawn(bool five)
     {
         int x = five ? 6 : particles.Length;
+        for(int i = 1; i < particles.Length; i++)
+        {
+            particles[i].SetPitch(particles[i - 1].GetPitch() + 0.1f);
+            particles[i].Spawning = true;
+        }
         for(int i = 0; i < x; i++)
         {
             particles[i].gameObject.SetActive(true);
-			particles[i].SpawnSound();
+            particles[i].Spawning = true;
+            particles[i].SpawnSound();
             particles[i].transform.position = new Vector2(Random.Range(.15f, .38f), Random.Range(.15f, .38f));
             yield return Timing.WaitForSeconds(0.05f);
+        }
+        for(int i = 0; i < particles.Length; i++)
+        {   
+            particles[i].SetPitch(1.0f);
+            particles[i].Spawning = false;
         }
         spawning = false;
         spawned = true;

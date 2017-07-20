@@ -42,7 +42,10 @@ public class Explosion : MonoBehaviour {
         }
         explosionText.text = "";
         explosionSystem.Play();
-        audio.Play();
+        if (!audio.isPlaying)
+        {
+            audio.Play();
+        }
         activated = false;
     }
 
