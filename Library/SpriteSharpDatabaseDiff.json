@@ -134,6 +134,7 @@
    "Preferences" : {
       "IsDisabled" : false,
       "SkipTextureSpriteExtrude" : false,
+      "WorkaroundSpriteAtlasRepacking" : true,
       "ReimportChangedSpritesOnDatabaseMismatch" : true,
       "DefaultSettings" : {
          "PlatformSharedTightMeshSettings" : {

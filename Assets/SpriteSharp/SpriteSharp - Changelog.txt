@@ -1,3 +1,7 @@
+2.4.1.0
+- Unity 2017.1 support.
+- Added a workaround for the Unity issue that causes Sprite Atlas to not repack sprite with modified meshes.
+
 2.4.0.0
 - Added Sprite Dicing feature that allows for tighter sprite atlas packing.
 - Added "Attach Alpha Sprites To Selection" menu item.
