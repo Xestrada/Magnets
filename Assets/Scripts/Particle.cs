@@ -69,7 +69,11 @@ public class Particle : MonoBehaviour {
     {
         if (!spawning && !spawnSound.isPlaying && (!coll.gameObject.tag.Equals("Cannon") || !coll.gameObject.tag.Equals("Explosion")))
         {
-            spawnSound.volume = collider.attachedRigidbody.velocity.magnitude / 4.5f;
+            spawnSound.volume = collider.attachedRigidbody.velocity.magnitude / 5.5f;
+            if(spawnSound.volume >= 1.0f)
+            {
+                spawnSound.volume = 0.85f;
+            }
             spawnSound.Play();
         }
 

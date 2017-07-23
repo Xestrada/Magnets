@@ -33,8 +33,17 @@ public class Manager : MonoBehaviour {
 	public Text countdown;
     public AudioSource beep;
 
+    //Music
+    public AudioSource music;
+
+    public AudioSource mid;
+    public AudioSource loseSound;
+
+    bool swapped;
+
     //Spawn in Particles and Activate First Cannon
 	void Start () {
+        swapped = false;
         continued = false;
         waiting = false;
         explosionAmount = 2;
@@ -67,6 +76,7 @@ public class Manager : MonoBehaviour {
 
     public void Play()
     {
+        swapped = false;
         explosionAmount = 2;
 		continued = false;
         checkForSpawn = true;
@@ -74,6 +84,8 @@ public class Manager : MonoBehaviour {
         ResetCannons();
         //Sets Up Play Scene
         fluid.Spawn();
+        music.Stop();
+        music.Play();
     }
 
     public void Continue()
@@ -103,7 +115,14 @@ public class Manager : MonoBehaviour {
         controls.isPlaying = playing;
         this.playing = true;
         waiting = false;
-
+        if (swapped)
+        {
+            mid.UnPause();
+        }
+        else
+        {
+            music.UnPause();
+        }
     }
 
     void DeactivateCannons()
@@ -147,7 +166,16 @@ public class Manager : MonoBehaviour {
         return amount;
     }
 
-	void FixedUpdate () {
+    void Update()
+    {
+        if(music.time >= 48 && !swapped)
+        {
+            mid.Play();
+            swapped = true;
+        }
+    }
+
+    void FixedUpdate () {
         if (checkForSpawn)
         {
             //Only for starting the game not continuing
@@ -199,6 +227,15 @@ public class Manager : MonoBehaviour {
             //Once Player Loses
             if (fluid.NumberActive() == 0 && !waiting)
             {
+                if (swapped)
+                {
+                    mid.Pause();
+                }
+                else
+                {
+                    music.Pause();
+                }
+                loseSound.Play();
                 ui.StartTime = 0;
                 ui.StopTime = Time.fixedTime;
                 controls.isPlaying = false;

@@ -302,6 +302,7 @@
     <Compile Include="Assets\Scripts\TouchControls.cs" />
     <Compile Include="Assets\Scripts\UI.cs" />
     <Compile Include="Assets\Scripts\UnityAdsInitializer.cs" />
+    <Compile Include="Assets\Scripts\VoltraceLogo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\FX Mega Pack 2\Scripts\Simple Particle Scaler\Simple Particle Scaler - Readme.txt" />
