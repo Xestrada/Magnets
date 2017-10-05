@@ -59,6 +59,7 @@ public class FluidController : MonoBehaviour {
         {
             particles[i].SetPitch(particles[i - 1].GetPitch() + 0.1f);
             particles[i].Spawning = true;
+            particles[i].spawnSound.enabled = true;
         }
         for(int i = 0; i < x; i++)
         {

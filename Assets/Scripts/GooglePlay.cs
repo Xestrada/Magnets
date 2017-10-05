@@ -18,9 +18,8 @@ public class GooglePlay : MonoBehaviour {
 
     public void SignIn(){
 		if (!PlayGamesPlatform.Instance.localUser.authenticated) {
-			PlayGamesPlatform.Instance.Authenticate (SignInCallBack, false);
+			PlayGamesPlatform.Instance.Authenticate (SignInCallBack, true);
 		} else {
-			//Signed Out
 			PlayGamesPlatform.Instance.SignOut();
 			signedIn = false;
 		}
@@ -32,15 +31,19 @@ public class GooglePlay : MonoBehaviour {
 		}
 	}
 
-	#elif UNITY_IOS 
+    public void PostScore()
+    {
+        Social.ReportScore((long)GameData.data.highScore, GPGSMagnets.leaderboard_time_survived, (bool success) => {
+            
+        });
+    }
+
+#elif UNITY_IOS
 
 	public void SignIn(){
 			Social.localUser.Authenticate((bool success) => {
 				if(success){
 					GooglePlay.signedIn = true;
-					achievelead[2].gameObject.SetActive(false);
-					achievelead[0].gameObject.SetActive(true);
-					achievelead[1].gameObject.SetActive(true);
 				}else{
 					GooglePlay.signedIn = false;
 				}
@@ -55,10 +58,17 @@ public class GooglePlay : MonoBehaviour {
 		}
 	}
 
-	#endif
+    public void PostScore()
+    {
+        Social.ReportScore((long)GameData.data.highScore, "com.Voltrace.magnets.time_survived", (bool success) => {
+            
+        });
+    }
+
+#endif
 
 
-	public void SignInCallBack(bool success){
+    public void SignInCallBack(bool success){
 		if (success) {
 			signedIn = true;
 		} else {

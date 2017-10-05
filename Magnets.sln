@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets.Plugins", "Magnets.Plugins.csproj", "{861CFC10-F54A-B88B-4828-C4D15D5CCB59}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets", "Magnets.csproj", "{0C2294E2-749B-829D-A884-C571E1030A04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets.Plugins", "Magnets.Plugins.csproj", "{861CFC10-F54A-B88B-4828-C4D15D5CCB59}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magnets.Editor", "Magnets.Editor.csproj", "{5EE62A22-185E-98DE-A78C-26DD3B1BA988}"
 EndProject
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C2294E2-749B-829D-A884-C571E1030A04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C2294E2-749B-829D-A884-C571E1030A04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2294E2-749B-829D-A884-C571E1030A04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2294E2-749B-829D-A884-C571E1030A04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861CFC10-F54A-B88B-4828-C4D15D5CCB59}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE62A22-185E-98DE-A78C-26DD3B1BA988}.Release|Any CPU.ActiveCfg = Release|Any CPU

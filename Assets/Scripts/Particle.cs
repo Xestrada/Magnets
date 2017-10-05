@@ -65,16 +65,37 @@ public class Particle : MonoBehaviour {
         return spawnSound.pitch;
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(spawnSound.enabled == true)
+        {
+            spawnSound.enabled = false;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        spawnSound.enabled = false;
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        spawnSound.enabled = true;
+    }
+
     void OnCollisionEnter2D(Collision2D coll)
     {
         if (!spawning && !spawnSound.isPlaying && (!coll.gameObject.tag.Equals("Cannon") || !coll.gameObject.tag.Equals("Explosion")))
         {
-            spawnSound.volume = collider.attachedRigidbody.velocity.magnitude / 5.5f;
+            spawnSound.volume = collider.attachedRigidbody.velocity.magnitude / 3.5f;
             if(spawnSound.volume >= 1.0f)
             {
-                spawnSound.volume = 0.85f;
+                spawnSound.volume = 0.7f;
             }
-            spawnSound.Play();
+            if (spawnSound.enabled)
+            {
+                spawnSound.Play();
+            }
         }
 
     }

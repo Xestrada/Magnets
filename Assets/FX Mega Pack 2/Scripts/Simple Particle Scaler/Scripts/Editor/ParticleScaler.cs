@@ -19,9 +19,9 @@ public class ParticleScaler : EditorWindow {
 
 	public static void ShowWindow() {
 		EditorWindow win = EditorWindow.GetWindow(typeof(ParticleScaler));
-#if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9 || UNITY_6
+#if UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9 || UNITY_2017
 		win.titleContent = new GUIContent("Simple Particle Scaler");
-#else
+#else 
 			win.title = "Simple Particle Scaler";	
 #endif
 		win.minSize = new Vector2(200.0f, 130.0f);
@@ -52,7 +52,7 @@ public class ParticleScaler : EditorWindow {
 		GUIStyle titleStyle = new GUIStyle(GUI.skin.label);
 		titleStyle.fixedWidth = 200.0f;
 		EditorGUILayout.Space();
-		scaleMultiplier = EditorGUILayout.Slider(scaleMultiplier, 0.1f, 4.0f);
+		scaleMultiplier = EditorGUILayout.Slider(scaleMultiplier, 0.01f, 4.0f);
 		EditorGUILayout.Space();
 		GUI.color = colorBlueLight;
 		EditorGUILayout.BeginHorizontal();
@@ -180,38 +180,33 @@ public class ParticleScaler : EditorWindow {
 			__particles_cs1.transform.localPosition *= scaleMultiplier;
 		}
 		SerializedObject serializedParticles = new SerializedObject(__particles_cs1);
-#if UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9 || UNITY_6
-			serializedParticles.FindProperty("InitialModule.startSize.scalar").floatValue *= scaleMultiplier;
-#else
-		serializedParticles.FindProperty("InitialModule.startSize.scalar").floatValue *= scaleMultiplier;
-#endif
 
-#if UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9 || UNITY_6
-			serializedParticles.FindProperty("InitialModule.gravityModifier.scalar").floatValue *= scaleMultiplier;
-#else
+#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4
 		serializedParticles.FindProperty("InitialModule.gravityModifier").floatValue *= scaleMultiplier;
-#endif
-
-#if UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9 || UNITY_6
-			serializedParticles.FindProperty("InitialModule.startSpeed.scalar").floatValue *= scaleMultiplier;
 #else
+		serializedParticles.FindProperty("InitialModule.gravityModifier.scalar").floatValue *= scaleMultiplier;
+#endif
+
+#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4
+#else
+		serializedParticles.FindProperty("NoiseModule.strength.scalar").floatValue *= scaleMultiplier;
+		serializedParticles.FindProperty("LightsModule.rangeCurve.scalar").floatValue *= scaleMultiplier;
+#endif
+
+		serializedParticles.FindProperty("InitialModule.startSize.scalar").floatValue *= scaleMultiplier;
 		serializedParticles.FindProperty("InitialModule.startSpeed.scalar").floatValue *= scaleMultiplier;
-#endif
-
-#if UNITY_5_5 || UNITY_5_6 || UNITY_5_7 || UNITY_5_8 || UNITY_5_9 || UNITY_6
-			serializedParticles.FindProperty("NoiseModule.strength.scalar").floatValue *= scaleMultiplier;
-			serializedParticles.FindProperty("LightsModule.rangeCurve.scalar").floatValue *= scaleMultiplier;
-
-#endif
-
-
-
-
 
 		serializedParticles.FindProperty("ShapeModule.boxX").floatValue *= scaleMultiplier;
 		serializedParticles.FindProperty("ShapeModule.boxY").floatValue *= scaleMultiplier;
 		serializedParticles.FindProperty("ShapeModule.boxZ").floatValue *= scaleMultiplier;
+
+
+#if UNITY_5_0 || UNITY_5_1 || UNITY_5_2 || UNITY_5_3 || UNITY_5_4 || UNITY_5_5
 		serializedParticles.FindProperty("ShapeModule.radius").floatValue *= scaleMultiplier;
+#else
+		serializedParticles.FindProperty("ShapeModule.radius.value").floatValue *= scaleMultiplier;
+#endif
+
 		serializedParticles.FindProperty("VelocityModule.x.scalar").floatValue *= scaleMultiplier;
 		serializedParticles.FindProperty("VelocityModule.y.scalar").floatValue *= scaleMultiplier;
 		serializedParticles.FindProperty("VelocityModule.z.scalar").floatValue *= scaleMultiplier;

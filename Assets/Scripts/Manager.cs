@@ -39,6 +39,9 @@ public class Manager : MonoBehaviour {
     public AudioSource mid;
     public AudioSource loseSound;
 
+    //Leaderboard Info
+    public GooglePlay lead;
+
     bool swapped;
 
     //Spawn in Particles and Activate First Cannon
@@ -72,6 +75,12 @@ public class Manager : MonoBehaviour {
             cannons[i].SetBullets(bullets);
         }
 
+    }
+
+    public void Save()
+    {
+        GameData.data.Save();
+        lead.PostScore();
     }
 
     public void Play()
@@ -115,6 +124,7 @@ public class Manager : MonoBehaviour {
         controls.isPlaying = playing;
         this.playing = true;
         waiting = false;
+        //Swaps audio files after certain time
         if (swapped)
         {
             mid.UnPause();
