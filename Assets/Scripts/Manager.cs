@@ -12,6 +12,7 @@ public class Manager : MonoBehaviour {
     public Border[] borders;
 
     public Explosion[] explosions;
+    bool stopExplosion;
     public CameraSetup cam;
     public TouchControls controls;
     public UI ui;
@@ -50,6 +51,7 @@ public class Manager : MonoBehaviour {
         continued = false;
         waiting = false;
         explosionAmount = 2;
+        stopExplosion = false;
         ui.MaxEdges = new Vector2(cam.CameraX(), cam.CameraY());
 
         //Set Up Borders
@@ -168,7 +170,7 @@ public class Manager : MonoBehaviour {
         int amount = 0;
         for(int i = 0; i < explosions.Length; i++)
         {
-            if (explosions[i].gameObject.activeSelf)
+            if (explosions[i].gameObject.activeSelf && explosions[i].isActivated())
             {
                 amount++;
             }
@@ -211,10 +213,32 @@ public class Manager : MonoBehaviour {
             {
                 for (int i = 0; i < explosions.Length; i++)
                 {
-                    if (!explosions[i].gameObject.activeSelf && explosionAmount > ExplosionsActive())
+                    
+                    if (!explosions[i].gameObject.activeSelf && !explosions[i].isActivated() && explosionAmount > ExplosionsActive())
                     {
                         explosions[i].gameObject.SetActive(true);
-                        explosions[i].Activate(cam.CameraX(), cam.CameraY());
+                        explosions[i].gameObject.transform.position = new Vector2(Random.Range(-cam.CameraX() + 1.0f, cam.CameraX() - 1.0f), Random.Range(-cam.CameraY() + 1.0f, cam.CameraY() - 1.0f));
+                        for(int j = 0; j < explosions.Length; j++)
+                        {
+                            if(i != j)
+                            {
+                                if (explosions[j].gameObject.activeSelf && explosions[j].isActivated() && explosions[i].isNear(explosions[j].transform.position))
+                                {
+                                    stopExplosion = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!stopExplosion)
+                        {
+                            explosions[i].gameObject.SetActive(true);
+                            explosions[i].Activate();
+                        }
+                        else
+                        {
+                            explosions[i].gameObject.SetActive(false);
+                            stopExplosion = false;
+                        }
                         break;
                     }
                 }

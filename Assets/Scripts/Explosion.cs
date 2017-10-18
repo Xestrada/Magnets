@@ -23,13 +23,22 @@ public class Explosion : MonoBehaviour {
     {
         activated = false;
     }
+    public bool isActivated()
+    {
+        return activated;
+    }
 
-    public void Activate(float x, float y)
+    public bool isNear(Vector2 test)
+    {
+        return Vector2.Distance(transform.position, test) < 2.5f;
+    }
+
+    public void Activate()
     {
         if (!activated)
         {
             activated = true;
-            transform.position = new Vector2(Random.Range(-x + 1.0f, x - 1.0f), Random.Range(-y + 1.0f, y - 1.0f));
+            //transform.position = new Vector2(Random.Range(-x + 1.0f, x - 1.0f), Random.Range(-y + 1.0f, y - 1.0f));
             explosionText.text = "" + 3;
             Timing.RunCoroutine(StartExplosion());
         }
@@ -53,6 +62,7 @@ public class Explosion : MonoBehaviour {
         {
             audio.Play();
         }
+        explosionText.text = "";
         activated = false;
     }
 
